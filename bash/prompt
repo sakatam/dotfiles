@@ -1,20 +1,30 @@
 #!/bin/bash
 
+function color_216 {
+  code=`echo 16 + $(( 6#${1} )) | bc`
+  echo "\033[38;5;${code}m"
+}
+
 # Color prompt
-color_green="\[\033[01;32m\]"
-color_red="\[\033[01;31m\]"
-color_purple="\[\033[01;34m\]"
-color_end="\[\033[00m\]"
+# c_host=`color_216 451` # pale green
+c_host=`color_216 345` # pale blue
+c_path=`color_216 411`
+c_git=`color_216 222`
+c_end="\[\033[00m\]"
 
 # Enabling git branch indication
 if hash __git_ps1 2>/dev/null; then
+  export GIT_PS1_SHOWDIRTYSTATE=1
   git_ps1="\$(__git_ps1 \"(%s)\")"
 fi
 
 # indicate git branch name
 case "$TERM" in
 xterm* | screen*)
-  PS1="${color_green}\u@\h${color_end}:${color_purple}\w${color_end}${git_ps1}\$ ";;
+  PS1="${c_host}\u@\h${c_end}:${c_path}\w${c_end}${c_git}${git_ps1}${c_end}\$ ";;
 *)
   PS1='\u@\h:\w\$ ';;
 esac
+
+unset c_user c_host c_path c_end
+unset color_216
