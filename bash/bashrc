@@ -1,4 +1,7 @@
-BASHRC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+#!/bin/bash
+
+export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
+export BASHRC_DIR=$DOTFILES_DIR/bash
 
 files=(
   $BASHRC_DIR/options         # Options
