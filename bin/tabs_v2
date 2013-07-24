@@ -1,0 +1,10 @@
+#!/bin/bash
+open_tab 'rename_tab workspace'        'cd ~/workspace/gilt/'
+open_tab 'rename_tab WebServer'        'cd ~/workspace/gilt/web-server'
+open_tab 'rename_tab WebClientBase'    'cd ~/workspace/gilt/web-client-base'
+open_tab 'rename_tab WebClientDesktop' 'cd ~/workspace/gilt/web-client-desktop'
+open_tab 'rename_tab WebClientMobile'  'cd ~/workspace/gilt/web-city-mobile'
+open_tab 'rename_tab WebApiClient'     'cd ~/workspace/gilt/web-api-client'
+open_tab 'rename_tab WebApiServer'     'cd ~/workspace/gilt/web-api-server'
+open_tab 'rename_tab WebApiServerV3'   'cd ~/workspace/gilt/web-api-server-v3'
+

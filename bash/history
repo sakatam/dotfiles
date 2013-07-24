@@ -1,0 +1,17 @@
+#!/bin/bash
+
+stty stop undef
+export HISTSIZE=90000
+export HISTCONTROL=ignoredups
+
+# history sharing
+case "$TERM" in
+xterm*)
+    function share_history {
+        history -a
+        history -c
+        history -r
+    }
+    PROMPT_COMMAND='share_history'
+    shopt -u histappend
+esac

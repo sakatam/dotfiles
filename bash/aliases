@@ -1,0 +1,14 @@
+#!/bin/bash
+
+alias grep='grep --color'
+alias ls='ls -GF'
+alias ll='ls -l'
+alias screen='screen -U -D -RR'
+alias zcat='gunzip -c'
+alias formatjson='python -mjson.tool'
+alias curl='curl -w "\n"'
+alias tree='tree -F --dirsfirst -C'
+
+# OSX specific
+alias here='open .'
+alias osascript='arch -i386 osascript'

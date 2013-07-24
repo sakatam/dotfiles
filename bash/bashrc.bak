@@ -1,0 +1,67 @@
+#!/bin/bash
+DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi
+
+# aliases
+source ${DOTFILES_DIR}/aliases
+
+#------------------------
+# variables
+#------------------------
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$PATH:/web/tools/bin
+export PATH=$PATH:$HOME/bin
+export PATH=$PATH:/Applications/GoogleAppEngineLauncher.app/Contents/Resources/GoogleAppEngine-default.bundle/Contents/Resources/google_appengine
+# This loads RVM into a shell session.
+[[ -s "/Users/msakata/.rvm/scripts/rvm" ]] && source "/Users/msakata/.rvm/scripts/rvm"
+
+export _JAVA_OPTIONS="-Duser.language=en_US -Dfile.encoding=UTF-8"
+export LANG=en_US.UTF-8
+
+export LSCOLORS=gxfxcxdxbxegedabagacad
+
+#------------------------
+# GIT settings
+#------------------------
+# indicate git branch name
+case "$TERM" in
+xterm* | screen*)
+  PS1='\u@\h:\w$(__git_ps1 "(%s)")\$ ';;
+  # PS1='\[\033[01;36m\]\u@\h\[\033[0m\]:\[\033[01;33m\]\w$(__git_ps1 "(%s)")\[\033[0m\]\$ ';;
+*)
+  PS1='\u@\h:\w\$ ';;
+esac
+
+export EDITOR=vim
+export GIT_PAGER='less -r -I'
+
+#------------------------
+# history
+#------------------------
+stty stop undef
+export HISTSIZE=90000
+
+# history sharing
+case "$TERM" in
+xterm*)
+    function share_history {
+        history -a
+        history -c
+        history -r
+    }
+    PROMPT_COMMAND='share_history'
+    shopt -u histappend
+esac
+
+#------------------------
+# NVM
+#------------------------
+export NVM_DIR=~/nvm
+[[ -r $NVM_DIR/nvm.sh ]] && . $NVM_DIR/nvm.sh
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

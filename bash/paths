@@ -1,0 +1,29 @@
+#!/bin/bash
+
+dirs_to_prepend=(
+  "/usr/local/bin" # Ensure that this bin always takes precedence over `/usr/bin`
+  "/usr/local/sbin"
+  "$(brew --prefix coreutils)/libexec/gnubin" # Add brew-installed GNU core utilities bin
+)
+
+dirs_to_append=(
+  "/usr/bin"
+  "$HOME/bin"
+  "$HOME/.dotfiles/bin"
+)
+
+for i in ${!dirs_to_prepend[*]}
+do
+  if [ -d ${dirs_to_prepend[$i]} ]; then
+    PATH="${dirs_to_prepend[$i]}:$PATH"
+  fi
+done
+
+for i in ${!dirs_to_append[*]}
+do
+  if [ -d ${dirs_to_append[$i]} ]; then
+    PATH="$PATH:${dirs_to_append[$i]}"
+  fi
+done
+
+unset dirs_to_prepend dirs_to_append

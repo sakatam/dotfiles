@@ -1,0 +1,22 @@
+#!/bin/bash
+# Commend to open new tab in Mac OS X Leopard Terminal.app.
+
+WAIT_FOR_TAB=0.15
+osascript >/dev/null 2>&1 <<EOS
+  tell application "System Events"
+    tell process "Terminal" to keystroke "t" using command down
+  end tell
+EOS
+
+if [ $# -ne 0 ]; then
+  sleep ${WAIT_FOR_TAB}
+  for cmd in "$@"
+  do
+    osascript >/dev/null 2>&1 <<EOS
+      tell application "Terminal"
+        activate
+        do script with command "${cmd}" in selected tab of the front window
+      end tell
+EOS
+  done
+fi

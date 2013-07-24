@@ -1,0 +1,21 @@
+BASHRC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+files=(
+  $BASHRC_DIR/options         # Options
+  $BASHRC_DIR/exports         # Exports
+  $BASHRC_DIR/history         # History Setting
+  $BASHRC_DIR/aliases         # Aliases
+  $BASHRC_DIR/prompt          # Custom bash prompt
+  $HOME/.bash_profile.local   # Local and private settings not under version control (e.g. git credentials)
+  $BASHRC_DIR/paths           # Path modifications (must source after `.bash_profile.local` in case of custom `brew` location)
+)
+
+# If these files are readable, source them
+for i in ${!files[*]}
+do
+  if [[ -r ${files[$i]} ]]; then
+    source ${files[$i]}
+  fi
+done
+
+unset files

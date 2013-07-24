@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+  echo "Usage: ${0} from to"
+  exit 1
+fi
+
+temppath=`dirname "$1"`/_`basename "$1"`
+git mv "${1}" "${temppath}"
+git mv "${temppath}" "${2}"
