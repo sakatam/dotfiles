@@ -1,14 +1,20 @@
 #!/bin/bash
 
-# Source Bash completion (installed via Homebrew)
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+# Color prompt
+color_green="\[\033[01;32m\]"
+color_red="\[\033[01;31m\]"
+color_purple="\[\033[01;34m\]"
+color_end="\[\033[00m\]"
+
+# Enabling git branch indication
+if hash __git_ps1 2>/dev/null; then
+  git_ps1="\$(__git_ps1 \"(%s)\")"
 fi
 
 # indicate git branch name
 case "$TERM" in
 xterm* | screen*)
-  PS1='\u@\h:\w$(__git_ps1 "(%s)")\$ ';;
+  PS1="${color_green}\u@\h${color_end}:${color_purple}\w${color_end}${git_ps1}\$ ";;
 *)
   PS1='\u@\h:\w\$ ';;
 esac
