@@ -15,11 +15,8 @@ files=(
 )
 
 # If these files are readable, source them
-for i in ${!files[*]}
-do
-  if [[ -r ${files[$i]} ]]; then
-    source ${files[$i]}
-  fi
+for file in ${files[@]}; do
+  [ -r $file ] && source $file
 done
 
 unset files

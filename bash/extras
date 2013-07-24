@@ -1,7 +1,12 @@
-# Import my-boxen env
-[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+#!/bin/bash
 
-# Source Bash completion (installed via Homebrew)
-if hash brew 2>/dev/null; then
-  for f in `brew --prefix`/etc/bash_completion.d/*; do source $f; done
-fi
+files=(
+  "/opt/boxen/env.sh" # my-boxen env
+  "`brew --prefix`/etc/bash_completion" # installed via Homebrew
+)
+
+for file in ${files[@]}; do
+  [ -r $file ] && source $file
+done
+
+unset files

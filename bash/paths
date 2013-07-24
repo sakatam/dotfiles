@@ -11,18 +11,12 @@ dirs_to_append=(
   "$DOTFILES_DIR/bin"
 )
 
-for i in ${!dirs_to_prepend[*]}
-do
-  if [ -d ${dirs_to_prepend[$i]} ]; then
-    PATH="${dirs_to_prepend[$i]}:$PATH"
-  fi
+for dir in ${dirs_to_prepend[@]}; do
+  [ -d $dir ] && PATH="$dir:$PATH"
 done
 
-for i in ${!dirs_to_append[*]}
-do
-  if [ -d ${dirs_to_append[$i]} ]; then
-    PATH="$PATH:${dirs_to_append[$i]}"
-  fi
+for dir in ${dirs_to_append[@]}; do
+  [ -d $dir ] && PATH="$PATH:$dir"
 done
 
 unset dirs_to_prepend dirs_to_append
