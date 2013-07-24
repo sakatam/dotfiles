@@ -1,0 +1,41 @@
+[alias]
+  br = branch
+  ci = commit
+  co = checkout
+  st = status
+  df = diff -U10 --ignore-space-change
+  log = log --no-space-change
+  clog = log --no-merges --pretty='format:%C(yellow)%h%x09%C(magenta)%ci%x09%C(cyan)%aE%x09%Creset%s'
+  cherry-pick = cherry-pick -x
+  # Stash-Pull-Pop
+  spp = !echo "-- stashing" && git stash && echo "-- pulling" && git pull && echo "-- restoring" && git stash pop
+
+[color]
+  branch = auto
+  diff = auto
+  grep = auto
+  interactive = auto
+  status = auto
+  ui = auto
+
+[color "diff"]
+  whitespace = red reverse
+
+[core]
+  ignorecase = false
+
+[push]
+  default = upstream
+
+[rebase]
+  stat = true
+
+[user]
+  email = maco.sakata@gmail.com
+  name = Makoto Sakata
+
+[hub]
+  protocol = https
+
+[include]
+  path = gitconfig-boxen
