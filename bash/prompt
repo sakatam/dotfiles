@@ -1,15 +1,33 @@
 #!/bin/bash
 
-function color_216 {
+# converts sernary to ansi 256 color number
+function sernary_to_color_num {
   code=`echo 16 + $(( 6#${1} )) | bc`
-  echo "\033[38;5;${code}m"
+  echo ${code}
 }
 
-# Color prompt
-# c_host=`color_216 451` # pale green
-c_host=`color_216 345` # pale blue
-c_path=`color_216 411`
-c_git=`color_216 222`
+# returns ANSI escape code for foreground color
+function 256_fg_color {
+  if [ -n "$1" ]; then
+    num="$1"
+  else
+    read num
+  fi
+  echo "\[\033[38;5;${num}m\]"
+}
+
+function 16_fg_color {
+  if [ -n "$1" ]; then
+    num="$1"
+  else
+    read num
+  fi
+  echo "\[\033[3${num}m\]"
+}
+
+c_host=`16_fg_color 2`
+c_path=`16_fg_color 1`
+c_git=`16_fg_color 3`
 c_end="\[\033[00m\]"
 
 # Enabling git branch indication
@@ -27,4 +45,4 @@ xterm* | screen*)
 esac
 
 unset c_user c_host c_path c_end
-unset color_216
+unset -f 256_fg_color 16_fg_color sernary_to_color_num
