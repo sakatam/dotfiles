@@ -1,12 +1,3 @@
 #!/bin/bash
-
-files=(
-  "/opt/boxen/env.sh" # my-boxen env
-  "`brew --prefix`/etc/bash_completion" # installed via Homebrew
-)
-
-for file in ${files[@]}; do
-  [ -r $file ] && source $file
-done
-
-unset files
+[ -f "/opt/boxen/env.sh" ] && source "/opt/boxen/env.sh"
+[ -f "`brew --prefix`/etc/bash_completion" ] && source "`brew --prefix`/etc/bash_completion"
