@@ -26,7 +26,7 @@ function 16_fg_color {
 }
 
 c_host=`16_fg_color 2`
-c_path=`16_fg_color 1`
+c_path=`16_fg_color 4`
 c_git=`16_fg_color 3`
 c_end="\[\033[00m\]"
 
