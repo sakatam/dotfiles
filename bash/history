@@ -10,7 +10,7 @@ shopt -s histappend
 # history sharing
 case "$TERM" in
 xterm*)
-    export PROMPT_COMMAND="history -a ; history -c ; history -r ; $PROMPT_COMMAND"
+  export PROMPT_COMMAND="history -a ; history -c ; history -r"
 esac
 
 # enabling ctrl+s on mac osx
