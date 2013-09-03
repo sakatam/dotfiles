@@ -1,0 +1,3 @@
+# http://bugs.mysql.com/bug.php?id=68449
+bind "^U"    vi-kill-line-prev
+bind "^W"    ed-delete-prev-word
