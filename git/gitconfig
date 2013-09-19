@@ -39,3 +39,6 @@
 
 [include]
   path = gitconfig-boxen
+
+[branch]
+  autosetuprebase = always
