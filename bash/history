@@ -3,7 +3,7 @@
 # sharing history between multiple terminal windows
 # http://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows#3055135
 
-export HISTSIZE=100000
+export HISTSIZE=50000
 export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 
