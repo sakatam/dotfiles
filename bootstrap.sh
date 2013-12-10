@@ -8,3 +8,4 @@ ln -sf $DOTFILES_DIR/vimrc $HOME/.vimrc
 
 ln -sf $DOTFILES_DIR/git/gitconfig $HOME/.gitconfig
 ln -sf $DOTFILES_DIR/git/gitconfig-boxen $HOME/.gitconfig-boxen
+
