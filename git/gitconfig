@@ -1,10 +1,14 @@
+[user]
+  email = maco.sakata@gmail.com
+  name = Makoto Sakata
+
 [alias]
   br = branch
   ci = commit
   co = checkout
   st = status
   df = diff -U10 --ignore-space-change
-  log = log --no-space-change
+  log = log --ignore-space-change --color
   clog = log --no-merges --pretty='format:%C(yellow)%h%x09%C(magenta)%ci%x09%C(cyan)%aE%x09%Creset%s'
   cherry-pick = cherry-pick -x
   # Stash-Pull-Pop
@@ -24,15 +28,14 @@
 [core]
   ignorecase = false
 
-[push]
-  default = upstream
-
 [rebase]
   stat = true
 
-[user]
-  email = maco.sakata@gmail.com
-  name = Makoto Sakata
+[pager]
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less[push]
+  default = upstream
 
 [hub]
   protocol = https

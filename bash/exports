@@ -6,5 +6,3 @@ export LC_CTYPE=UTF-8
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
 export EDITOR=vim
-
-export GIT_PAGER='less -r -I'
