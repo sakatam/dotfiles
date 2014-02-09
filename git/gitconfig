@@ -13,6 +13,7 @@
   cherry-pick = cherry-pick -x
   # Stash-Pull-Pop
   spp = !echo "-- stashing" && git stash && echo "-- pulling" && git pull && echo "-- restoring" && git stash pop
+  tree= log --graph --abbrev-commit --pretty=oneline
 
 [color]
   branch = auto
@@ -27,6 +28,7 @@
 
 [core]
   ignorecase = false
+  excludesfile = /opt/boxen/config/git/gitignore
 
 [rebase]
   stat = true
@@ -42,3 +44,7 @@
 
 [include]
   path = gitconfig-boxen
+
+[credential]
+  helper = /opt/boxen/bin/boxen-git-credential
+

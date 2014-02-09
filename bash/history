@@ -1,17 +1,19 @@
 #!/bin/bash
 
-stty stop undef
-export HISTSIZE=90000
-export HISTCONTROL=ignoredups
+# sharing history between multiple terminal windows
+# http://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows#3055135
+
+export HISTSIZE=50000
+export HISTCONTROL=ignoredups:erasedups
+shopt -s histappend
 
 # history sharing
 case "$TERM" in
 xterm*)
-    function share_history {
-        history -a
-        history -c
-        history -r
-    }
-    PROMPT_COMMAND='share_history'
-    shopt -u histappend
+  export PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 esac
+
+# enabling ctrl+s on mac osx
+# http://dallarosa.tumblr.com/post/31333511717/commandt-and-ctrl-s-on-mac-os-x
+stty -ixon -ixoff
+stty stop undef
