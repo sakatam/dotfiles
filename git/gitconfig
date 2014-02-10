@@ -37,7 +37,7 @@
 [pager]
   log = diff-highlight | less -r
   show = diff-highlight | less -r
-  diff = diff-highlight | less[push] -r
+  diff = diff-highlight | less -r
   default = upstream
 
 [hub]
