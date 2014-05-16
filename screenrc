@@ -5,4 +5,6 @@ bind s
 startup_message off  # おまけ: 起動画面OFF
 autodetach on        # おまけ: 回線切断時に自動でdetach
 defscrollback 8192   # おまけ: スクロールバッファ行数を増やす
-escape ^Aa
+escape ^Tt
+
+shell -bash
