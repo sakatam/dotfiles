@@ -5,6 +5,7 @@ dirs_to_prepend=(
   "/usr/local/bin" # Ensure that this bin always takes precedence over `/usr/bin`
   "/usr/local/sbin"
   "$HOME/.rbenv/bin"
+  "$HOME/.nodenv/bin"
 )
 
 dirs_to_append=(
