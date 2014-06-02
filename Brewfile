@@ -7,4 +7,5 @@ install ruby-build
 
 # nodejs
 install nodenv
-install node-build
+# install node-build:
+# https://github.com/OiNutter/node-build#installation 
