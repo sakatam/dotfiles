@@ -2,7 +2,6 @@
 
 alias curl='curl -w "\n"'
 alias formatjson='python -mjson.tool'
-alias g='git'
 alias grep='grep --color'
 alias ls='ls -GF'
 alias ll='ls -l'
@@ -14,6 +13,10 @@ alias zcat='gunzip -c'
 # OSX specific
 alias here='open .'
 alias osascript='arch -i386 osascript'
+
+# git
+alias g='git'
+alias gg='git grep'
 
 # ruby
 alias be='bundle exec'
