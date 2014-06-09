@@ -1,0 +1,26 @@
+{
+  "name": "language-nginx",
+  "version": "0.3.0",
+  "description": "Syntax and snippet support for Nginx configuration files",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hnagato/atom-language-nginx"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {},
+  "readme": "# Nginx syntax support in Atom\n\nAdds syntax highlighting and snippet support to Nginx configuration files.\nPorted from [textmate/nginx](https://github.com/johnmuhl/nginx-tmbundle) for Atom.\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/hnagato/atom-language-nginx/issues"
+  },
+  "homepage": "https://github.com/hnagato/atom-language-nginx",
+  "_id": "language-nginx@0.3.0",
+  "dist": {
+    "shasum": "75263d1bff6ac8a2fde8565abacfd57266a27397"
+  },
+  "_resolved": "/var/folders/15/zl30pl251rxd297v48bkby_w0000gn/T/d-11455-40692-1fscjsg/package.tgz",
+  "_from": "/var/folders/15/zl30pl251rxd297v48bkby_w0000gn/T/d-11455-40692-1fscjsg/package.tgz"
+}
