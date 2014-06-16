@@ -13,7 +13,8 @@
   cherry-pick = cherry-pick
   # Stash-Pull-Pop
   spp = !echo "-- stashing" && git stash && echo "-- pulling" && git pull && echo "-- restoring" && git stash pop
-  tree= log --graph --abbrev-commit --pretty=oneline
+  tree = log --graph --abbrev-commit --pretty=oneline
+  delete-merged-branches = "!f() { git checkout --quiet master && git branch --merged | grep --invert-match '\\*' | xargs -n 1 git branch --delete; git checkout --quiet @{-1}; }; f"
 
 [color]
   branch = auto
