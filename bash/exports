@@ -6,3 +6,4 @@ export LC_CTYPE=en_US.UTF-8
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
 export EDITOR=vim
+export GEM_EDITOR=atom
