@@ -9,6 +9,9 @@
     'atom-dark-ui'
     'base16-tomorrow-dark-theme'
   ]
+  'disabledPackages': [
+    'ruby-string-interpolation'
+  ]
 'exception-reporting':
   'userId': '4ff845b6-6109-cf78-0a00-0a08438a946b'
 'welcome':
