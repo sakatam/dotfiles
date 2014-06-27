@@ -48,7 +48,10 @@
   path = gitconfig-boxen
 
 [credential]
-  helper = /opt/boxen/bin/boxen-git-credential
+  helper = "if [[ -z "$BOXEN_HOME"]]; then HLPR='/opt/boxen/bin/boxen-git-credential'; else HLPR='cache'; fi; $HLPR"
 
 [push]
   default = current
+
+[pull]
+  rebase = true
