@@ -13,7 +13,8 @@ set autoindent
 set expandtab
 
 " Indicate invisibles
-set listchars=eol:$,trail:_,tab:>\
+set listchars=tab:>-,eol:$,trail:~,
+set list
 
 " Encoding settings
 set fenc=utf-8
@@ -28,6 +29,7 @@ try
   call vundle#rc()
   
   Bundle 'kchmck/vim-coffee-script'
+  Plugin 'fatih/vim-go'
 catch
 endtry
 

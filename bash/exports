@@ -8,3 +8,6 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 export EDITOR=vim
 export GEM_EDITOR=atom
 export BUNDLER_EDITOR=atom
+
+export PROJECTS_PATH=$HOME/code
+export GOPATH=$PROJECTS_PATH/go
