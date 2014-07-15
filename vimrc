@@ -18,7 +18,7 @@ set list
 
 " Encoding settings
 set fenc=utf-8
-set fencs=iso-2022-jp,euc-jp,cp932,utf-8
+set fencs=utf-8,iso-2022-jp,euc-jp,cp932
 set enc=utf-8
 
 " Vundle

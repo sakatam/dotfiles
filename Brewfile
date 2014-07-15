@@ -13,3 +13,6 @@ install nodenv
 # cask
 tap caskroom/cask
 install brew-cask
+
+# tmux
+install tmux
