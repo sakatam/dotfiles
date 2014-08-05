@@ -9,7 +9,7 @@ alias psql='psql -x'
 alias screen='screen -U -D -RR'
 alias tree='tree -F --dirsfirst -C'
 alias zcat='gunzip -c'
-alias tmux='tmux attach'
+alias tmux='tmux attach || tmux new'
 
 # OSX specific
 alias here='open .'
