@@ -30,6 +30,7 @@ try
   
   Bundle 'kchmck/vim-coffee-script'
   Plugin 'fatih/vim-go'
+  Plugin 'elzr/vim-json'
 catch
 endtry
 
