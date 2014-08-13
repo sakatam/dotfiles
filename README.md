@@ -3,10 +3,8 @@ dotfiles
 
 wish this makes my life easy
 
-installation
+installation for OSX
 ------------
-
-## OSX
 
 install brew first
 
@@ -16,6 +14,10 @@ brew bundle dotfiles/Brewfile
 ~/dotfiles/bootstrap.sh
 ```
 
+### terminal setup
 
-for better terminal colors
-https://github.com/tomislav/osx-terminal.app-colors-solarized
+* terminal theme
+    * import `files/Tomorrow Night.terminal`
+
+* fonts
+    * install [Ricty Diminished](http://save.sys.t.u-tokyo.ac.jp/~yusa/fonts/rictydiminished.html)

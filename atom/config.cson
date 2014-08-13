@@ -1,9 +1,10 @@
 'editor':
-  'fontSize': 14
-  'fontFamily': '"Migu 1M"'
+  'fontFamily': '"Ricty Diminished"'
   'softWrap': true
   'autoIndentOnPaste': true
   'normalizeIndentOnPaste': false
+  'showInvisibles': true
+  'fontSize': 15
 'core':
   'themes': [
     'atom-dark-ui'
