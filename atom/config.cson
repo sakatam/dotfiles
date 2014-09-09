@@ -1,10 +1,10 @@
 'editor':
-  'fontFamily': '"Ricty Diminished"'
   'softWrap': true
   'autoIndentOnPaste': true
   'normalizeIndentOnPaste': false
   'showInvisibles': true
-  'fontSize': 15
+  'fontFamily': '"Ricty Diminished"'
+  'invisibles': {}
 'core':
   'themes': [
     'atom-dark-ui'
