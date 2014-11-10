@@ -1,21 +1,24 @@
-'editor':
-  'softWrap': true
-  'autoIndentOnPaste': true
-  'normalizeIndentOnPaste': false
-  'showInvisibles': true
-  'fontFamily': '"Ricty Diminished"'
-  'invisibles': {}
-'core':
-  'themes': [
-    'atom-dark-ui'
-    'base16-tomorrow-dark-theme'
-  ]
-  'disabledPackages': [
-    'ruby-string-interpolation'
-  ]
-'exception-reporting':
-  'userId': '4ff845b6-6109-cf78-0a00-0a08438a946b'
-'welcome':
-  'showOnStartup': false
-'metrics':
-  'userId': 'a619b0cf772828e1afd5021f5f942ffbb7c3fa66'
+'global':
+  'editor':
+    'softWrap': true
+    'autoIndentOnPaste': true
+    'normalizeIndentOnPaste': false
+    'showInvisibles': true
+    'fontFamily': '"Ricty Diminished"'
+    'invisibles': {}
+  'core':
+    'themes': [
+      'atom-dark-ui'
+      'base16-tomorrow-dark-theme'
+    ]
+    'disabledPackages': [
+      'ruby-string-interpolation'
+      'go-plus'
+    ]
+  'exception-reporting':
+    'userId': '4ff845b6-6109-cf78-0a00-0a08438a946b'
+  'welcome':
+    'showOnStartup': false
+  'metrics':
+    'userId': 'a619b0cf772828e1afd5021f5f942ffbb7c3fa66'
+  'go-plus': {}
