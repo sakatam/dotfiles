@@ -1,8 +1,6 @@
 'global':
   'editor':
     'softWrap': true
-    'autoIndentOnPaste': true
-    'normalizeIndentOnPaste': false
     'showInvisibles': true
     'fontFamily': '"Ricty Diminished"'
     'invisibles': {}
@@ -21,4 +19,3 @@
     'showOnStartup': false
   'metrics':
     'userId': 'a619b0cf772828e1afd5021f5f942ffbb7c3fa66'
-  'go-plus': {}
