@@ -1,21 +1,21 @@
-'global':
-  'editor':
-    'softWrap': true
-    'showInvisibles': true
-    'fontFamily': '"Ricty Diminished"'
-    'invisibles': {}
-  'core':
-    'themes': [
-      'atom-dark-ui'
-      'base16-tomorrow-dark-theme'
+"*":
+  editor:
+    fontFamily: "\"Ricty Diminished\""
+    showInvisibles: true
+    softWrap: true
+    invisibles: {}
+  core:
+    disabledPackages: [
+      "ruby-string-interpolation"
+      "go-plus"
     ]
-    'disabledPackages': [
-      'ruby-string-interpolation'
-      'go-plus'
+    themes: [
+      "atom-dark-ui"
+      "base16-tomorrow-dark-theme"
     ]
-  'exception-reporting':
-    'userId': '4ff845b6-6109-cf78-0a00-0a08438a946b'
-  'welcome':
-    'showOnStartup': false
-  'metrics':
-    'userId': 'a619b0cf772828e1afd5021f5f942ffbb7c3fa66'
+  "exception-reporting":
+    userId: "4ff845b6-6109-cf78-0a00-0a08438a946b"
+  welcome:
+    showOnStartup: false
+  metrics:
+    userId: "a619b0cf772828e1afd5021f5f942ffbb7c3fa66"
