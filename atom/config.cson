@@ -8,6 +8,7 @@
     disabledPackages: [
       "ruby-string-interpolation"
       "go-plus"
+      "ruby-slim"
     ]
     themes: [
       "atom-dark-ui"
@@ -19,3 +20,6 @@
     showOnStartup: false
   metrics:
     userId: "a619b0cf772828e1afd5021f5f942ffbb7c3fa66"
+".slim.text":
+  editor:
+    showInvisibles: true
