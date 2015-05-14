@@ -1,39 +1,25 @@
 scriptencoding utf-8
 
-syntax on
-try
-  colorscheme jellybeans
-catch
-endtry
-
-set ignorecase
-set smartcase
-set showmatch
-set autoindent
-set expandtab
-
-" Indicate invisibles
-set listchars=tab:>-,eol:$,trail:~,
-set list
-
-" Encoding settings
-set fenc=utf-8
-set fencs=utf-8,iso-2022-jp,euc-jp,cp932
-set enc=utf-8
-
-" Vundle
+" vundle
 try
   set nocompatible
   filetype off
   set rtp+=~/.vim/bundle/Vundle.vim/
   call vundle#rc()
   
+  Bundle 'nanotech/jellybeans.vim'
   Bundle 'kchmck/vim-coffee-script'
+  Bundle 'scrooloose/nerdtree'
+  Bundle 'ctrlpvim/ctrlp.vim'
   Plugin 'fatih/vim-go'
   Plugin 'elzr/vim-json'
 catch
 endtry
 
-syntax enable
-filetype plugin indent on
+" personal settings
+set rtp+=~/dotfiles/vim/
+runtime! rc/*.vim
+
+" shortcuts
+map <C-n> :NERDTreeToggle<CR>
 
