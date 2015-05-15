@@ -11,6 +11,7 @@ try
   Bundle 'kchmck/vim-coffee-script'
   Bundle 'scrooloose/nerdtree'
   Bundle 'ctrlpvim/ctrlp.vim'
+  Bundle 'mkitt/tabline.vim'
   Plugin 'fatih/vim-go'
   Plugin 'elzr/vim-json'
 catch
