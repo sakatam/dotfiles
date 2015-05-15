@@ -10,6 +10,7 @@ try
   Bundle 'nanotech/jellybeans.vim'
   Bundle 'kchmck/vim-coffee-script'
   Bundle 'scrooloose/nerdtree'
+  Bundle 'jistr/vim-nerdtree-tabs'
   Bundle 'ctrlpvim/ctrlp.vim'
   Bundle 'mkitt/tabline.vim'
   Plugin 'fatih/vim-go'
@@ -21,6 +22,7 @@ endtry
 set rtp+=~/dotfiles/vim/
 runtime! rc/*.vim
 
-" shortcuts
-map <C-n> :NERDTreeToggle<CR>
+" shortcuts for nerd tree
+map <C-n> :NERDTreeTabsToggle<CR>
+" map <C-n> :NERDTreeToggle<CR>
 
