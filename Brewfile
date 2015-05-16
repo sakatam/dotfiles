@@ -1,18 +1,20 @@
-install git
-install bash-completion
+brew 'git'
+brew 'bash-completion'
+brew 'reattach-to-user-namespace'
 
 # ruby
-install rbenv
-install ruby-build
+brew 'rbenv'
+brew 'ruby-build'
 
 # nodejs
-install nodenv
+brew 'nodenv'
+
 # install node-build:
-# https://github.com/OiNutter/node-build#installation 
+# https://github.com/OiNutter/node-build#installation
 
 # cask
-tap caskroom/cask
-install brew-cask
+tap 'caskroom/cask'
+brew 'brew-cask'
 
 # tmux
-install tmux
+brew 'tmux'

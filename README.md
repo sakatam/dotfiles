@@ -9,9 +9,15 @@ installation for OSX
 install brew first
 
 ```bash
-brew bundle dotfiles/Brewfile 
+brew bundle dotfiles/Brewfile
 [ -e ~/.bash_profile ] || echo source $HOME/dotfiles/bash/bashrc > ~/.bash_profile
 ~/dotfiles/bootstrap.sh
+```
+
+using brewfile
+```bash
+brew tap homebrew/bundle
+brew bundle
 ```
 
 ### terminal setup

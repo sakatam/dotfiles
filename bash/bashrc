@@ -4,6 +4,7 @@ export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
 export BASHRC_DIR=$DOTFILES_DIR/bash
 
 files=(
+  /etc/bashrc
   $BASHRC_DIR/options         # Options
   $BASHRC_DIR/exports         # Exports
   $BASHRC_DIR/history         # History setting
