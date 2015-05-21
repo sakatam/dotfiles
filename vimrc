@@ -15,6 +15,7 @@ try
   Bundle 'mkitt/tabline.vim'
   Plugin 'fatih/vim-go'
   Plugin 'elzr/vim-json'
+  Plugin 'rking/ag.vim'
 catch
 endtry
 
