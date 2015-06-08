@@ -25,3 +25,7 @@ runtime! rc/*.vim
 
 " shortcuts for nerd tree
 map <C-n> :NERDTreeTabsToggle<CR>
+
+" use osx's clipboard
+set clipboard+=unnamed
+
