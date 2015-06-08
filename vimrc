@@ -6,7 +6,7 @@ try
   filetype off
   set rtp+=~/.vim/bundle/Vundle.vim/
   call vundle#rc()
-  
+
   Bundle 'nanotech/jellybeans.vim'
   Bundle 'kchmck/vim-coffee-script'
   Bundle 'scrooloose/nerdtree'
@@ -25,5 +25,3 @@ runtime! rc/*.vim
 
 " shortcuts for nerd tree
 map <C-n> :NERDTreeTabsToggle<CR>
-" map <C-n> :NERDTreeToggle<CR>
-
