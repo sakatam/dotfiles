@@ -1,5 +1,16 @@
-var DocsParser = require('./docsparser.js');
-var escape = DocsParser.escape;
+var Parsers = {
+  JsParser: require("./languages/javascript"),
+  CppParser: require("./languages/cpp"),
+  RustParser: require("./languages/rust"),
+  PhpParser: require("./languages/php"),
+  CoffeeParser: require("./languages/coffee"),
+  ActionscriptParser: require("./languages/actionscript"),
+  ObjCParser: require("./languages/objc"),
+  JavaParser: require("./languages/java"),
+  TypescriptParser: require("./languages/typescript"),
+};
+
+var escape = require('./utils').escape;
 var util = require('util');
 //var Snippets = atom.packages.activePackages.snippets.mainModule;
 
@@ -9,7 +20,7 @@ module.exports =
 
     function DocBlockrAtom() {
       var self = this;
-      var settings = atom.config.getSettings().docblockr;
+      var settings = atom.config.get('docblockr');
       this.editor_settings = settings;
 
       atom.config.observe('docblockr', function() {
@@ -75,22 +86,22 @@ module.exports =
         }
         else if(self.validate_request({preceding:true, preceding_regex:regex.snippet_1[0], following:true, following_regex:regex.snippet_1[1]})) {
           // console.log('Snippet-1 command');
-          var editor = atom.workspace.getActiveEditor();
+          var editor = atom.workspace.getActiveTextEditor();
           self.write(editor, '\n$0\n ');
         }
         // Close block comment
         else if(self.validate_request({preceding:true, preceding_regex:regex.close_block})) {
           // console.log('Snippet close block comment command');
-          var editor = atom.workspace.getActiveEditor();
+          var editor = atom.workspace.getActiveTextEditor();
           self.write(editor, '\n$0\n */');
         }
         // extend line comments (// and #)
         else if((self.editor_settings.extend_double_slash == true) && (self.validate_request({preceding:true, preceding_regex:regex.extend_line, scope:'comment.line'}))) {
           // console.log('Snippet Extend line command');
           var _regex = /^(\s*(?:#|\/\/[\/!]?)\s*).*$/;
-          var editor = atom.workspace.getActiveEditor();
+          var editor = atom.workspace.getActiveTextEditor();
           var cursor_position = editor.getCursorBufferPosition();
-          var line_text = editor.lineForBufferRow(cursor_position.row);
+          var line_text = editor.lineTextForBufferRow(cursor_position.row);
           line_text = line_text.replace(_regex, '$1');
           editor.insertText('\n' + line_text);
         }
@@ -98,9 +109,9 @@ module.exports =
         else if(self.validate_request({preceding:true, preceding_regex:regex.extend, scope:'comment.block'})) {
           // console.log('Snippet Extend command');
           var _regex = /^(\s*\*\s*).*$/;
-          var editor = atom.workspace.getActiveEditor();
+          var editor = atom.workspace.getActiveTextEditor();
           var cursor_position = editor.getCursorBufferPosition();
-          var line_text = editor.lineForBufferRow(cursor_position.row);
+          var line_text = editor.lineTextForBufferRow(cursor_position.row);
           line_text = line_text.replace(_regex, '$1');
           editor.insertText('\n' + line_text);
         }
@@ -115,7 +126,7 @@ module.exports =
         if(self.validate_request({preceding:true, preceding_regex:_regex}))
           self.parse_command(true);
         else {
-          var editor = atom.workspace.getActiveEditor();
+          var editor = atom.workspace.getActiveTextEditor();
           editor.insertNewline();
           //event.abortKeyBinding();
         }
@@ -153,7 +164,7 @@ module.exports =
     }
 
     DocBlockrAtom.prototype.update_config = function() {
-      var settings = atom.config.getSettings().docblockr;
+      var settings = atom.config.get('docblockr');
       this.editor_settings = settings;
     };
 
@@ -182,7 +193,7 @@ module.exports =
       var following_regex = (typeof options.following_regex !== 'undefined') ? options.following_regex : '';
       var scope     = (typeof options.scope !== 'undefined') ? options.scope : false;
 
-      var editor = atom.workspace.getActiveEditor();
+      var editor = atom.workspace.getActiveTextEditor();
       this.cursors = [];
       var cursor, i, len, following_text, preceding_text;
 
@@ -192,7 +203,7 @@ module.exports =
         var cursor_position = cursor_positions[i].getBufferPosition();
 
         if(scope) {
-          var scope_list = editor.scopesForBufferPosition(cursor_position);
+          var scope_list = editor.scopeDescriptorForBufferPosition(cursor_position).getScopesArray();
           var _i, _len;
           for(_i = 0; _len = scope_list.length, _i < _len; _i++) {
             if(scope_list[_i].search(scope) > -1) {
@@ -210,7 +221,7 @@ module.exports =
           preceding_text = editor.getTextInBufferRange([[cursor_position.row, 0], cursor_position]);
 
         if(following) {
-          var line_length = editor.lineLengthForBufferRow(cursor_position.row);
+          var line_length = editor.lineTextForBufferRow(cursor_position.row).length;
           var following_range = [cursor_position, [cursor_position.row, line_length]];
           following_text = editor.getTextInBufferRange(following_range);
         }
@@ -251,7 +262,7 @@ module.exports =
     };
 
     DocBlockrAtom.prototype.parse_command = function(inline) {
-      var editor = atom.workspace.getActiveEditor();
+      var editor = atom.workspace.getActiveTextEditor();
       if (typeof editor === 'undefined' || editor === null) {
         return;
       }
@@ -278,13 +289,13 @@ module.exports =
       /**
        * Trim the automatic whitespace added when creating a new line in a docblock.
        */
-      var editor = atom.workspace.getActiveEditor();
+      var editor = atom.workspace.getActiveTextEditor();
       if (typeof editor === 'undefined' || editor === null) {
         return;
       }
       var cursor_position = editor.getCursorBufferPosition();
-      var line_text = editor.lineForBufferRow(cursor_position.row);
-      var line_length = editor.lineLengthForBufferRow(cursor_position.row);
+      var line_text = editor.lineTextForBufferRow(cursor_position.row);
+      var line_length = editor.lineTextForBufferRow(cursor_position.row).length;
       var spaces = Math.max(0, this.editor_settings.indentation_spaces);
 
       var regex = /^(\s*\*)\s*$/;
@@ -294,9 +305,9 @@ module.exports =
     };
 
     DocBlockrAtom.prototype.indent_command = function() {
-      var editor = atom.workspace.getActiveEditor();
+      var editor = atom.workspace.getActiveTextEditor();
       var current_pos = editor.getCursorBufferPosition();
-      var prev_line = editor.lineForBufferRow(current_pos.row - 1);
+      var prev_line = editor.lineTextForBufferRow(current_pos.row - 1);
       var spaces = this.get_indent_spaces(editor, prev_line);
 
       if(spaces !== null) {
@@ -314,7 +325,7 @@ module.exports =
     };
 
     DocBlockrAtom.prototype.join_command = function() {
-      var editor = atom.workspace.getActiveEditor();
+      var editor = atom.workspace.getActiveTextEditor();
       var selections = editor.getSelections();
       var i, j, len, row_begin;
       var text_with_ending = function(row) {
@@ -342,14 +353,14 @@ module.exports =
         }
         var regex = /[ \t]*\n[ \t]*((?:\*|\/\/[!/]?|#)[ \t]*)?/g;
         text = text.replace(regex, ' ');
-        var end_line_length = editor.lineLengthForBufferRow(row_begin + no_rows - 1);
+        var end_line_length = editor.lineTextForBufferRow(row_begin + no_rows - 1).length;
         var range = [[row_begin, 0], [row_begin + no_rows - 1, end_line_length]];
         editor.setTextInBufferRange(range, text);
       }
     };
 
     DocBlockrAtom.prototype.decorate_command = function() {
-      var editor = atom.workspace.getActiveEditor();
+      var editor = atom.workspace.getActiveTextEditor();
       var pos = editor.getCursorBufferPosition();
       var whitespace_re = /^(\s*)\/\//;
       var scope_range = this.scope_range(editor, pos, 'comment.line.double-slash');
@@ -360,7 +371,7 @@ module.exports =
       _len = Math.abs(scope_range[0].row - scope_range[1].row);
 
       for(_i = 0; _i <= _len; _i++) {
-        line_text = editor.lineForBufferRow(_row + _i);
+        line_text = editor.lineTextForBufferRow(_row + _i);
         tab_count = line_text.split('\t').length - 1;
 
         var matches = whitespace_re.exec(line_text);
@@ -370,7 +381,7 @@ module.exports =
           leading_ws = matches[1].length;
 
         leading_ws-= tab_count;
-        max_len = Math.max(max_len, editor.lineLengthForBufferRow(_row + _i));
+        max_len = Math.max(max_len, editor.lineTextForBufferRow(_row + _i).length);
       }
 
       var line_length = max_len - leading_ws;
@@ -378,8 +389,8 @@ module.exports =
       editor.buffer.insert(scope_range[1], '\n' + leading_ws + this.repeat('/' , (line_length + 3)) + '\n');
 
       for(_i = _len; _i >= 0; _i--) {
-        line_text = editor.lineForBufferRow(_row + _i);
-        var _length = editor.lineLengthForBufferRow(_row + _i);
+        line_text = editor.lineTextForBufferRow(_row + _i);
+        var _length = editor.lineTextForBufferRow(_row + _i).length;
         var r_padding = 1 + (max_len - _length);
         var _range = [[scope_range[0].row + _i, 0], [scope_range[0].row + _i, _length]];
         editor.setTextInBufferRange(_range, leading_ws + line_text + this.repeat(' ', r_padding) + '//');
@@ -388,7 +399,7 @@ module.exports =
     };
 
     DocBlockrAtom.prototype.decorate_multiline_command = function() {
-      var editor = atom.workspace.getActiveEditor();
+      var editor = atom.workspace.getActiveTextEditor();
       var pos = editor.getCursorBufferPosition();
       var whitespace_re = /^(\s*)\/\*/;
       var tab_size = atom.config.get('editor.tabLength');
@@ -401,7 +412,7 @@ module.exports =
       _len = Math.abs(scope_range[0].row - scope_range[1].row);
 
       // get block indent from first line
-      line_text = editor.lineForBufferRow(_row);
+      line_text = editor.lineTextForBufferRow(_row);
       block_tab_count = line_text.split('\t').length - 1;
       matches = whitespace_re.exec(line_text);
       if(matches == null)
@@ -413,7 +424,7 @@ module.exports =
       // get max_len
       for(_i = 1; _i < _len; _i++) {
         var text_length;
-        line_text = editor.lineForBufferRow(_row + _i);
+        line_text = editor.lineTextForBufferRow(_row + _i);
         text_length = line_text.length;
         content_tab_count = line_text.split('\t').length - 1;
         line_lengths[_i] = text_length - content_tab_count + (content_tab_count * tab_size);
@@ -424,7 +435,7 @@ module.exports =
       block_ws = this.repeat('\t', block_tab_count) + this.repeat(' ', block_ws);
 
       // last line
-      line_text = editor.lineForBufferRow(scope_range[1].row);
+      line_text = editor.lineTextForBufferRow(scope_range[1].row);
       line_text = line_text.replace(/^(\s*)(\*)+\//, function(self) {
         return function(match, p1, stars) {
           var len = stars.length;
@@ -435,7 +446,7 @@ module.exports =
       editor.setTextInBufferRange(_range, line_text);
 
       // first line
-      line_text = editor.lineForBufferRow(scope_range[0].row);
+      line_text = editor.lineTextForBufferRow(scope_range[0].row);
       line_text = line_text.replace(/^(\s*)\/(\*)+/, function(self) {
         return function(match, p1, stars) {
           var len = stars.length;
@@ -447,8 +458,8 @@ module.exports =
 
       // skip first line and last line
       for(_i = _len-1; _i > 0; _i--) {
-        line_text = editor.lineForBufferRow(_row + _i);
-        var _length = editor.lineLengthForBufferRow(_row + _i);
+        line_text = editor.lineTextForBufferRow(_row + _i);
+        var _length = editor.lineTextForBufferRow(_row + _i).length;
         var r_padding = 1 + (max_len - line_lengths[_i]);
         _range = [[scope_range[0].row + _i, 0], [scope_range[0].row + _i, _length]];
         editor.setTextInBufferRange(_range, line_text + this.repeat(' ', r_padding) + '*');
@@ -463,9 +474,9 @@ module.exports =
        *//*|   <-- from here
       |      <-- to here
        */
-      var editor = atom.workspace.getActiveEditor();
+      var editor = atom.workspace.getActiveTextEditor();
       var cursor = editor.getCursorBufferPosition();
-      var text = editor.lineForBufferRow(cursor.row);
+      var text = editor.lineTextForBufferRow(cursor.row);
       text = text.replace(/^(\s*)\s\*\/.*/, '\n$1');
       editor.insertText(text, options={ autoIndentNewline:false });
     };
@@ -476,7 +487,7 @@ module.exports =
       var tab_stop = function(m, g1) {
         return util.format('${%d:%s}', tab_index(), g1);
       };
-      var editor = atom.workspace.getActiveEditor();
+      var editor = atom.workspace.getActiveTextEditor();
       var pos = editor.getCursorBufferPosition();
       var Snippets = atom.packages.activePackages.snippets.mainModule;
       // disable all snippet expansions
@@ -505,7 +516,7 @@ module.exports =
        *  Wrap column is set by the first ruler (set in Default.sublime-settings), or 80 by default.
        * Shortcut Key: alt+q
        */
-      var editor = atom.workspace.getActiveEditor();
+      var editor = atom.workspace.getActiveTextEditor();
       var pos = editor.getCursorBufferPosition();
       var tab_size = atom.config.get('editor.tabLength');
       var wrap_len = atom.config.get('editor.preferredLineLength');
@@ -526,7 +537,7 @@ module.exports =
       var start_row = scope_range[0].row;
       len = Math.abs(scope_range[0].row - scope_range[1].row);
       for(i = 0; i <= len; i++) {
-        _text = editor.lineForBufferRow(start_row + i);
+        _text = editor.lineTextForBufferRow(start_row + i);
         _col = _text.search(/^\s*\* /);
         if(_col > -1) {
           if(i === 0) {
@@ -541,7 +552,7 @@ module.exports =
       }
       // find the first tag, or the end of the comment
       for(i = 0; i <= len; i++) {
-        _text = editor.lineForBufferRow(start_row + i);
+        _text = editor.lineTextForBufferRow(start_row + i);
         _col = _text.search(/^\s*\*(\/)/);
         if(_col > -1) {
           if(i === 0) {
@@ -677,7 +688,7 @@ module.exports =
       inline = (typeof inline === 'undefined') ? false : inline;
       var cursor_position = editor.getCursorBufferPosition(); // will handle only one instance
       // Get trailing string
-      var line_length = editor.lineLengthForBufferRow(cursor_position.row);
+      var line_length = editor.lineTextForBufferRow(cursor_position.row).length;
       this.trailing_range = [cursor_position, [cursor_position.row, line_length]];
       this.trailing_string = editor.getTextInBufferRange(this.trailing_range);
       // drop trailing */
@@ -712,7 +723,7 @@ module.exports =
     };
 
     DocBlockrAtom.prototype.repeat = function(string, number) {
-      return Array(number + 1).join(string);
+      return Array(Math.max(0, number) + 1).join(string);
     };
 
     DocBlockrAtom.prototype.write = function(editor, str) {
@@ -740,7 +751,7 @@ module.exports =
         // TODO: no longer works
         if(point >= editor.getText().length)
             return;
-        return editor.lineForBufferRow(point.row);
+        return editor.lineTextForBufferRow(point.row);
     };
 
     DocBlockrAtom.prototype.scope_range = function(editor, point, scope_name) {
@@ -757,7 +768,7 @@ module.exports =
       start = _range.start;
       end = _range.end;
       while(_row >= 0) {
-        line_length = editor.lineLengthForBufferRow(_row);
+        line_length = editor.lineTextForBufferRow(_row).length;
         _range = editor.displayBuffer.bufferRangeForScopeAtPosition(scope_name, [_row, line_length]);
         if(_range == null)
           break;
@@ -770,7 +781,7 @@ module.exports =
       _row = point.row;
       var last_row = editor.getLastBufferRow();
       while(_row <= last_row) {
-        line_length = editor.lineLengthForBufferRow(_row);
+        line_length = editor.lineTextForBufferRow(_row).length;
         _range = editor.displayBuffer.bufferRangeForScopeAtPosition(scope_name, [_row, 0]);
         if(_range == null)
           break;
@@ -789,27 +800,27 @@ module.exports =
       var matches = regex.exec(scope);
       var source_lang = (matches === null)? null: matches[1];
 
-      var settings = atom.config.getSettings().docblockr;
+      var settings = atom.config.get('docblockr');
 
       if((source_lang === null) && (scope == "text.html.php")) {
-        return new DocsParser.PhpParser(settings);
+        return new Parsers.PhpParser(settings);
       }
 
       if(source_lang === "coffee")
-          return new DocsParser.CoffeeParser(settings);
+          return new Parsers.CoffeeParser(settings);
       else if((source_lang === "actionscript") || (source_lang == 'haxe'))
-          return new DocsParser.ActionscriptParser(settings);
-      else if((source_lang === "c++") || (source_lang === 'c') || (source_lang === 'cuda-c++'))
-          return new DocsParser.CppParser(settings);
+          return new Parsers.ActionscriptParser(settings);
+      else if((source_lang === "c++") || (source_lang === "cpp") || (source_lang === 'c') || (source_lang === 'cuda-c++'))
+          return new Parsers.CppParser(settings);
       else if((source_lang === 'objc') || (source_lang === 'objc++'))
-          return new DocsParser.ObjCParser(settings);
+          return new Parsers.ObjCParser(settings);
       else if((source_lang === 'java') || (source_lang === 'groovy'))
-          return new DocsParser.JavaParser(settings);
+          return new Parsers.JavaParser(settings);
       else if(source_lang === 'rust')
-          return new DocsParser.RustParser(settings);
+          return new Parsers.RustParser(settings);
       else if(source_lang === 'ts')
-          return new DocsParser.TypescriptParser(settings);
-      return new DocsParser.JsParser(settings);
+          return new Parsers.TypescriptParser(settings);
+      return new Parsers.JsParser(settings);
     };
 
     DocBlockrAtom.prototype.generate_snippet = function(out, inline) {
