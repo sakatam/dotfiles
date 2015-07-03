@@ -1,6 +1,6 @@
 {
   "name": "language-ejs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "EJS support for Atom.",
   "repository": {
@@ -12,18 +12,16 @@
     "atom": ">0.50.0"
   },
   "dependencies": {},
-  "readme": "# language-ejs package\n\nEJS support for Atom.\n\nConverted from [https://github.com/gregory-m/ejs-tmbundle](https://github.com/gregory-m/ejs-tmbundle).\n",
+  "readme": "# language-ejs package\n\nEJS support for Atom.\n\nConverted from [https://github.com/gregory-m/ejs-tmbundle](https://github.com/gregory-m/ejs-tmbundle).\n\nSelect \"JavaScript Template\" if it's not automatically working.\n\n\n## Screenshot\n\n![screenshot](screenshot.png)\n",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/darron/language-ejs/issues"
   },
   "homepage": "https://github.com/darron/language-ejs",
-  "_id": "language-ejs@0.1.0",
-  "dist": {
-    "shasum": "e442df56fef1ba246481fc316973d676aa547613"
-  },
-  "_resolved": "/private/var/folders/15/zl30pl251rxd297v48bkby_w0000gn/T/d-1141017-53457-n66d2a/package.tgz",
-  "_from": "/private/var/folders/15/zl30pl251rxd297v48bkby_w0000gn/T/d-1141017-53457-n66d2a/package.tgz",
+  "_id": "language-ejs@0.2.0",
+  "_shasum": "c30d74b5238c47e3c2ba9159ed055df3b7f12854",
+  "_resolved": "file:../d-115530-8271-z9qczo/package.tgz",
+  "_from": "../d-115530-8271-z9qczo/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],
