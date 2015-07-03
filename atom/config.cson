@@ -27,12 +27,12 @@
 ".slim.text":
   editor:
     showInvisibles: true
+"exception-reporting":
+  userId: "dd356586-7bc2-a0aa-3ddd-008f73853305"
+welcome:
+  showOnStartup: false
+metrics:
+  userId: "08ec762590e6b97592055b97d9546dd510d808cd"
 editor:
   fontFamily: "Migu 2M"
   fontSize: 15
-metrics:
-  userId: "08ec762590e6b97592055b97d9546dd510d808cd"
-welcome:
-  showOnStartup: false
-"exception-reporting":
-  userId: "dd356586-7bc2-a0aa-3ddd-008f73853305"
