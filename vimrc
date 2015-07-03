@@ -11,6 +11,7 @@ try
   Bundle 'kchmck/vim-coffee-script'
   Bundle 'scrooloose/nerdtree'
   Bundle 'ctrlpvim/ctrlp.vim'
+  Bundle 'git@github.com:chriskempson/vim-tomorrow-theme.git'
   Plugin 'fatih/vim-go'
   Plugin 'rking/ag.vim'
 " Bundle 'mkitt/tabline.vim'
@@ -30,3 +31,6 @@ map <C-b> :CtrlPBuffer<CR>
 
 " use osx's clipboard
 set clipboard+=unnamed
+
+"" colorscheme
+colorscheme Tomorrow-Night
