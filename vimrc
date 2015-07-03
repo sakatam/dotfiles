@@ -29,6 +29,9 @@ map <C-n> :NERDTreeToggle<CR>
 " shortcuts for CtrlPBuffer
 map <C-b> :CtrlPBuffer<CR>
 
+" shortcuts for CtrlPBuffer
+map <C-a> :Ag<Space>
+
 " use osx's clipboard
 set clipboard+=unnamed
 
