@@ -14,6 +14,7 @@ try
   Bundle 'git@github.com:chriskempson/vim-tomorrow-theme.git'
   Plugin 'fatih/vim-go'
   Plugin 'rking/ag.vim'
+  Plugin 'derekwyatt/vim-scala'
 " Bundle 'mkitt/tabline.vim'
 " Plugin 'elzr/vim-json'
 catch
