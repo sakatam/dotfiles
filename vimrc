@@ -7,7 +7,6 @@ try
   set rtp+=~/.vim/bundle/Vundle.vim/
   call vundle#rc()
 
-  Bundle 'nanotech/jellybeans.vim'
   Bundle 'kchmck/vim-coffee-script'
   Bundle 'scrooloose/nerdtree'
   Bundle 'ctrlpvim/ctrlp.vim'
@@ -15,7 +14,8 @@ try
   Plugin 'fatih/vim-go'
   Plugin 'rking/ag.vim'
   Plugin 'derekwyatt/vim-scala'
-" Bundle 'mkitt/tabline.vim'
+  Plugin 'ap/vim-buftabline'
+" Bundle 'nanotech/jellybeans.vim'
 " Plugin 'elzr/vim-json'
 catch
 endtry
@@ -36,5 +36,6 @@ map <C-a> :Ag<Space>
 " use osx's clipboard
 set clipboard+=unnamed
 
-"" colorscheme
+" colorscheme
 colorscheme Tomorrow-Night
+
