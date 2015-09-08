@@ -24,9 +24,6 @@ endtry
 set rtp+=~/dotfiles/vim/
 runtime! rc/*.vim
 
-" shortcuts for nerd tree
-map <C-n> :NERDTreeToggle<CR>
-
 " shortcuts for CtrlPBuffer
 map <C-b> :CtrlPBuffer<CR>
 
