@@ -127,11 +127,11 @@
     'name': 'keyword.control.puppet'
   }
   {
-    'match': '((\\$?)"?[a-zA-Z_\\x{7f}-\\x{ff}][a-zA-Z0-9_\\x{7f}-\\x{ff}]*"?):(?=\\s+|$)'
-    'name': 'entity.name.section.puppet'
+    'include': '#strings'
   }
   {
-    'include': '#strings'
+    'match': '((\\$?)"?[a-zA-Z_\\x{7f}-\\x{ff}][a-zA-Z0-9_\\x{7f}-\\x{ff}]*"?):(?=\\s+|$)'
+    'name': 'entity.name.section.puppet'
   }
   {
     'include': '#variable'
@@ -153,7 +153,7 @@
     'name': 'constant.other.bareword.puppet'
   }
   {
-    'match': '(?i)\\b(alert|crit|debug|defined|emerg|err|escape|fail|failed|file|generate|gsub|include|info|notice|package|realize|search|tag|tagged|template|warning)\\b'
+    'match': '(?i)\\b(alert|contain|crit|debug|defined|emerg|err|escape|fail|failed|file|generate|gsub|include|info|notice|package|realize|search|tag|tagged|template|warning)\\b'
     'name': 'support.function.puppet'
   }
 ]

@@ -1,11 +1,14 @@
 helper         = require '../lib/helper'
 operatorConfig = require '../lib/operator-config'
+path           = require 'path'
 
 describe "Helper", ->
   editor = null
   config = null
 
   beforeEach ->
+    atom.project.setPaths([path.join(__dirname, 'fixtures')])
+
     waitsForPromise ->
       atom.packages.activatePackage('language-coffee-script')
 
@@ -14,10 +17,28 @@ describe "Helper", ->
         editor = o
 
     runs ->
-      buffer = editor.buffer
       config = operatorConfig.getConfig '='
 
+  afterEach ->
+    atom.config.unset('aligner')
+
   describe "getSameIndentationRange", ->
+    describe "should include comments", ->
+      output = null
+
+      beforeEach ->
+        atom.config.set('aligner.alignAcrossComments', true)
+        output = helper.getSameIndentationRange editor, 23, ':'
+
+      it "should get the valid start row", ->
+        expect(output.start).toBe 22
+
+      it "should get the valid end row", ->
+        expect(output.end).toBe 32
+
+      it "should get the valid offset", ->
+        expect(output.offset).toEqual [6]
+
     describe "should return valid range object when cursor is in the middle", ->
       output = null
       beforeEach ->
@@ -172,11 +193,24 @@ describe "Helper", ->
 
       it "should handle tabs correctly", ->
         atom.config.set 'editor.softTabs', false
-        line   = editor.displayBuffer.tokenizedBuffer.tokenizedLineForRow(17)
+        line   = editor.displayBuffer.tokenizedBuffer.tokenizedLineForRow(18)
         output = helper.parseTokenizedLine line, "=", config
 
-        expect(output[0].before).toBe "testing"
-        expect(output[0].after).toBe "123"
+        expect(output[0].before).toBe "test"
+        expect(output[0].after).toBe "'abc'      "
+
+    describe "parse a line with different tab length", ->
+      beforeEach ->
+        atom.config.set 'editor.tabLength', 4
+
+      afterEach ->
+        atom.config.set 'editor.tabLength', 2
+
+      it 'should parse leading whitespace correctly', ->
+        line = editor.displayBuffer.tokenizedBuffer.tokenizedLineForRow(6)
+        output = helper.parseTokenizedLine line, ':', config
+        expect(output[0].before).toBe "test"
+        expect(output[0].after).toBe "\"123\""
 
     describe "parsing a line with multiple characters", ->
       output = null

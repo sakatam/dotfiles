@@ -1,3 +1,14 @@
+## v0.15.0 (2015-08-11)
+- Align when using selection or have multiple selections
+- Fix undefined appended to comment block when `align across comment` option is on
+
+## v0.14.0 (2015-08-08)
+- Add `Align across comments` option
+
+## v0.13.1 (2015-07-23)
+- Fix tab length of 4 breaks leading whitespace
+- Fix trailing tab not rendering correctly after aligning
+
 ## v0.13.0 (2015-05-12)
 - Multiple cursors support
 

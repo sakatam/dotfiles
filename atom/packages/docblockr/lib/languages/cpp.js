@@ -32,7 +32,7 @@ CppParser.prototype.parse_function = function(line) {
         '(?P<name>' + this.settings.varIdentifier + ');?' +
         // void fnName
         // (arg1, arg2)
-        '\\s*\\(\\s*(?P<args>.*)\\)'
+        '\\s*\\(\\s*(?P<args>.*?)\\)'
     );
 
     var matches = xregexp.exec(line, regex);
@@ -44,7 +44,7 @@ CppParser.prototype.parse_function = function(line) {
 };
 
 CppParser.prototype.parse_args = function(args) {
-    if(args.trim() == 'void')
+    if(args.trim() === 'void')
         return [];
     return DocsParser.prototype.parse_args.call(this, args);
     //return super(JsdocsCPP, self).parseArgs(args)
@@ -55,6 +55,10 @@ CppParser.prototype.get_arg_type = function(arg) {
 };
 
 CppParser.prototype.get_arg_name = function(arg) {
+    if(arg === "...") {
+        // variable arguments
+        return "VARARGS";
+    }
     var regex = new RegExp(this.settings.varIdentifier + '(?:\s*=.*)?$');
     var matches = regex.exec(arg);
     return matches[1];

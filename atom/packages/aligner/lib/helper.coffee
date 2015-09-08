@@ -18,9 +18,6 @@ parseTokenizedLine = (tokenizedLine, character, config) ->
   parsed.prefix  = null
   whitespaces    = tokenizedLine.firstNonWhitespaceIndex
 
-  if tokenizedLine.invisibles
-    whitespaceInvisible = new RegExp(tokenizedLine.invisibles.space, "g")
-
   section =
     before: ""
     after:  ""
@@ -38,17 +35,19 @@ parseTokenizedLine = (tokenizedLine, character, config) ->
       after:  ""
 
   for token in tokenizedLine.tokens
-    # To account for leading whitespaces
-    if whitespaces > 0
-      whitespaces -= token.screenDelta
-      continue
-
     tokenValue = token.value
 
-    # To convert trailing whitespace invisible to whitespace
-    if token.firstTrailingWhitespaceIndex? and token.hasInvisibleCharacters
-      tokenValue = tokenValue.substring(0, token.firstTrailingWhitespaceIndex) +
-        tokenValue.substring(token.firstTrailingWhitespaceIndex).replace(whitespaceInvisible, " ")
+    # To account for leading whitespaces
+    if whitespaces > 0
+      # if for some reason there is more whitespaces than the length of first token
+      if whitespaces > tokenValue.length
+        whitespaces -= tokenValue.length
+        continue
+
+      tokenValue = tokenValue.substring token.firstNonWhitespaceIndex
+      whitespaces -= token.firstNonWhitespaceIndex
+
+    tokenValue = _formatTokenValue tokenValue, token, tokenizedLine.invisibles
 
     if operatorConfig.canAlignWith(character, tokenValue.trim(), config) and (not afterCharacter or config.multiple)
       parsed.prefix = operatorConfig.isPrefixed tokenValue.trim(), config
@@ -104,13 +103,18 @@ getSameIndentationRange = (editor, row, character) ->
     if start > -1
       startLine = getTokenizedLineForBufferRow editor, start
 
-      if startLine? and editor.indentationForBufferRow(start) is indent and
-          (parsed = parseTokenizedLine startLine, character, config) and parsed.valid
+      if startLine? and editor.indentationForBufferRow(start) is indent
+        if atom.config.get('aligner.alignAcrossComments') and startLine.isComment()
+          start -= 1
 
-        checkOffset parsed
-        output.start  = start
-        hasPrefix     = true if not hasPrefix and parsed.prefix
-        start        -= 1
+        else if (parsed = parseTokenizedLine startLine, character, config) and parsed.valid
+          checkOffset parsed
+          output.start  = start
+          hasPrefix     = true if not hasPrefix and parsed.prefix
+          start        -= 1
+
+        else
+          start = -1
 
       else
         start = -1
@@ -118,13 +122,18 @@ getSameIndentationRange = (editor, row, character) ->
     if end < total + 1
       endLine = getTokenizedLineForBufferRow editor, end
 
-      if endLine? and editor.indentationForBufferRow(end) is indent and
-          (parsed = parseTokenizedLine endLine, character, config) and parsed.valid
+      if endLine? and editor.indentationForBufferRow(end) is indent
+        if atom.config.get('aligner.alignAcrossComments') and endLine.isComment()
+          end += 1
 
-        checkOffset parsed
-        output.end  = end
-        hasPrefix   = true if not hasPrefix and parsed.prefix
-        end        += 1
+        else if (parsed = parseTokenizedLine endLine, character, config) and parsed.valid
+          checkOffset parsed
+          output.end  = end
+          hasPrefix   = true if not hasPrefix and parsed.prefix
+          end        += 1
+
+        else
+          end = total + 1
 
       else
         end = total + 1
@@ -156,9 +165,26 @@ getTokenizedAlignCharacter = (tokens, languageScope = 'base') ->
 getTokenizedLineForBufferRow = (editor, row) ->
   editor.displayBuffer.tokenizedBuffer.tokenizedLineForRow(row)
 
+_formatTokenValue = (value, token, invisibles) ->
+  # To convert trailing whitespace invisible to whitespace
+  if token.firstTrailingWhitespaceIndex? and token.hasInvisibleCharacters
+    trailing = value.substring(token.firstTrailingWhitespaceIndex)
+
+    if invisibles.space?
+      trailing = trailing.replace(new RegExp(invisibles.space, 'g'), " ")
+
+    if invisibles.tab?
+      trailing = trailing.replace(new RegExp(invisibles.tab, 'g'), "\t")
+
+    value = value.substring(0, token.firstTrailingWhitespaceIndex) + trailing
+
+  return value
+
+
 module.exports = {
   getSameIndentationRange
   parseTokenizedLine
   getTokenizedAlignCharacter
   getTokenizedLineForBufferRow
+  _formatTokenValue
 }
