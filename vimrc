@@ -20,14 +20,14 @@ try
 catch
 endtry
 
+" line numbers
+set nu
+
 " personal settings
 set rtp+=~/dotfiles/vim/
 runtime! rc/*.vim
 
-" shortcuts for CtrlPBuffer
-map <C-b> :CtrlPBuffer<CR>
-
-" shortcuts for CtrlPBuffer
+" shortcuts for ag
 map <C-a> :Ag<Space>
 
 " use osx's clipboard
