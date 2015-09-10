@@ -10,12 +10,11 @@ try
   Bundle 'kchmck/vim-coffee-script'
   Bundle 'scrooloose/nerdtree'
   Bundle 'ctrlpvim/ctrlp.vim'
-  Bundle 'git@github.com:chriskempson/vim-tomorrow-theme.git'
+  Bundle 'chriskempson/vim-tomorrow-theme'
   Plugin 'fatih/vim-go'
   Plugin 'rking/ag.vim'
   Plugin 'derekwyatt/vim-scala'
   Plugin 'ap/vim-buftabline'
-" Bundle 'nanotech/jellybeans.vim'
 " Plugin 'elzr/vim-json'
 catch
 endtry
@@ -27,12 +26,6 @@ set nu
 set rtp+=~/dotfiles/vim/
 runtime! rc/*.vim
 
-" shortcuts for ag
-map <C-a> :Ag<Space>
-
 " use osx's clipboard
 set clipboard+=unnamed
-
-" colorscheme
-colorscheme Tomorrow-Night
 

@@ -1,3 +1,6 @@
+" shortcuts for ag
+map <C-a> :Ag<Space>
+
 " use ag for ctrlp
 if executable('ag')
   let g:ctrlp_use_caching=0
