@@ -20,3 +20,7 @@ alias gg='git grep'
 
 # ruby
 alias be='bundle exec'
+
+# sift
+alias sift="sift --exclude-dirs='.git'"
+
