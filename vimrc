@@ -29,3 +29,9 @@ runtime! rc/*.vim
 " use osx's clipboard
 set clipboard+=unnamed
 
+" indent
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+
