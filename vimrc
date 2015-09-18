@@ -15,7 +15,9 @@ try
   Plugin 'rking/ag.vim'
   Plugin 'derekwyatt/vim-scala'
   Plugin 'ap/vim-buftabline'
-" Plugin 'elzr/vim-json'
+  Plugin 'tpope/vim-dispatch'
+  Plugin 'thoughtbot/vim-rspec'
+  Plugin 'tpope/vim-fugitive'
 catch
 endtry
 
