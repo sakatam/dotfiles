@@ -18,6 +18,7 @@
   # hub
   pr = pull-request
   current-branch = symbolic-ref --short HEAD
+  current-commit = rev-parse --short HEAD
 
 [color]
   branch = auto
