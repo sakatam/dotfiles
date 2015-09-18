@@ -5,3 +5,6 @@ nnoremap <silent>bb :b#<CR>
 " buffer close
 nnoremap <silent>bc :bd<CR>
 
+" indicate modification
+let g:buftabline_indicators = 1
+

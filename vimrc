@@ -18,6 +18,7 @@ try
   Plugin 'tpope/vim-dispatch'
   Plugin 'thoughtbot/vim-rspec'
   Plugin 'tpope/vim-fugitive'
+  Plugin 'vim-ruby/vim-ruby'
 catch
 endtry
 
