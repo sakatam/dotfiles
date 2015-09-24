@@ -14,11 +14,11 @@ try
   Plugin 'fatih/vim-go'
   Plugin 'rking/ag.vim'
   Plugin 'derekwyatt/vim-scala'
-  Plugin 'ap/vim-buftabline'
   Plugin 'tpope/vim-dispatch'
   Plugin 'thoughtbot/vim-rspec'
   Plugin 'tpope/vim-fugitive'
   Plugin 'vim-ruby/vim-ruby'
+  "Plugin 'ap/vim-buftabline'
 catch
 endtry
 
