@@ -18,6 +18,9 @@ try
   Plugin 'thoughtbot/vim-rspec'
   Plugin 'tpope/vim-fugitive'
   Plugin 'vim-ruby/vim-ruby'
+  Plugin 'Shougo/vimproc.vim'
+  Plugin 'Shougo/unite.vim'
+  Plugin 'thinca/vim-unite-history'
   "Plugin 'ap/vim-buftabline'
 catch
 endtry

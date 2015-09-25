@@ -1,6 +1,6 @@
 " shortcuts for nerd tree
 " map <C-n> :NERDTreeToggle<CR>
-map <C-n> :call g:WorkaroundNERDTreeToggle()<CR>
+map <silent> <C-n> :call g:WorkaroundNERDTreeToggle()<CR>
 
 function! g:WorkaroundNERDTreeToggle()
   try | NERDTreeToggle | catch | silent! NERDTree | endtry
