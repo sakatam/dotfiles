@@ -5,7 +5,7 @@ let g:unite_enable_start_insert = 1
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 
-" grep検索
+" grep
 nnoremap <silent><Leader>g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 
 " カーソル位置の単語をgrep検索
@@ -20,6 +20,9 @@ if executable('ag')
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
   let g:unite_source_grep_recursive_opt = ''
 endif
+
+" command history
+nnoremap <silent><Leader>h  :<C-u>Unite history/command<cr>
 
 " enable yank history
 let g:unite_source_history_yank_enable = 1
