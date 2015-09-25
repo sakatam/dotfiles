@@ -28,10 +28,6 @@ endtry
 " line numbers
 set nu
 
-" personal settings
-set rtp+=~/dotfiles/vim/
-runtime! rc/*.vim
-
 " use osx's clipboard
 set clipboard+=unnamed
 
@@ -43,4 +39,8 @@ set expandtab
 
 " change the mapleader from \ to ,
 let mapleader=","
+
+" personal settings
+set rtp+=~/dotfiles/vim/
+runtime! rc/*.vim
 
