@@ -46,7 +46,7 @@ endfunction
 
 function! LightLineFilename()
   return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+       \ ('' != expand('%:t') ? expand('%:t') : '[no name]') .
        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
 endfunction
 
