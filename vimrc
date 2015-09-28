@@ -21,6 +21,7 @@ try
   Plugin 'Shougo/vimproc.vim'
   Plugin 'Shougo/unite.vim'
   Plugin 'thinca/vim-unite-history'
+  Plugin 'itchyny/lightline.vim'
   "Plugin 'ap/vim-buftabline'
 catch
 endtry
