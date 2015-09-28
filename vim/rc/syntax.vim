@@ -11,4 +11,3 @@ filetype plugin indent on
 " indicate invisibles
 set listchars=tab:▸\ ,eol:¬,trail:~,
 set list
-

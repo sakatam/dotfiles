@@ -11,6 +11,7 @@ try
   Bundle 'scrooloose/nerdtree'
   Bundle 'ctrlpvim/ctrlp.vim'
   Bundle 'chriskempson/vim-tomorrow-theme'
+  Bundle 'ntpeters/vim-better-whitespace'
   Plugin 'fatih/vim-go'
   Plugin 'rking/ag.vim'
   Plugin 'derekwyatt/vim-scala'
