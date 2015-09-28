@@ -31,7 +31,7 @@ endtry
 set nu
 
 " always show statusline
-:set laststatus=2
+set laststatus=2
 
 " use osx's clipboard
 set clipboard+=unnamed

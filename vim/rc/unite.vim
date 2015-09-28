@@ -27,3 +27,9 @@ nnoremap <silent><Leader>h  :<C-u>Unite history/command<cr>
 " enable yank history
 let g:unite_source_history_yank_enable = 1
 
+" cursorline highlight
+" let g:unite_cursor_line_highlight = 'Search'
+" let g:unite_abbr_highlight = 'StatusLine'
+let g:unite_cursor_line_highlight = 'TabLineSel'
+let g:unite_abbr_highlight = 'Normal'
+
