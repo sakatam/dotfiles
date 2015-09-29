@@ -54,7 +54,7 @@ function! LightLineFugitive()
 endfunction
 
 function! LightLineFilename()
-  let fname = expand('%:t')
+  let fname = expand('%')
   return fname == 'ControlP' ? g:lightline.ctrlp_item :
        \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
        \ ('' != fname ? fname : '[no name]') .
