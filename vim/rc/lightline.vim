@@ -17,6 +17,7 @@ let g:lightline = {
       \   'readonly': 'LightLineReadonly',
       \   'modified': 'LightLineModified',
       \   'filename': 'LightLineFilename',
+      \   'mode':     'LightLineMode',
       \   'ctrlpmark': 'CtrlPMark'
       \ },
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
@@ -59,6 +60,10 @@ function! LightLineFilename()
        \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
        \ ('' != fname ? fname : '[no name]') .
        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineMode()
+  return winwidth(0) > 60 ? lightline#mode()[ : 3] : ''
 endfunction
 
 function! CtrlPMark()
