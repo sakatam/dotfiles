@@ -7,6 +7,7 @@ try
   set rtp+=~/.vim/bundle/Vundle.vim/
   call vundle#rc()
 
+  Bundle 'VundleVim/Vundle.vim'
   Bundle 'kchmck/vim-coffee-script'
   Bundle 'scrooloose/nerdtree'
   Bundle 'ctrlpvim/ctrlp.vim'
@@ -25,6 +26,7 @@ try
   Plugin 'itchyny/lightline.vim'
   Plugin 'slim-template/vim-slim'
   Plugin 'vim-ruby/vim-ruby'
+  Plugin '29decibel/codeschool-vim-theme'
   "Plugin 'ap/vim-buftabline'
 catch
 endtry
