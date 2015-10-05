@@ -30,6 +30,11 @@ let g:unite_source_history_yank_enable = 1
 " cursorline highlight
 " let g:unite_cursor_line_highlight = 'Search'
 " let g:unite_abbr_highlight = 'StatusLine'
-let g:unite_cursor_line_highlight = 'TabLineSel'
-let g:unite_abbr_highlight = 'Normal'
+"let g:unite_cursor_line_highlight = 'TabLineSel'
+"let g:unite_abbr_highlight = 'Normal'
 
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction

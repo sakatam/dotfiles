@@ -1,13 +1,22 @@
 " syntax highlighting
 syntax on
 try
-  colorscheme Tomorrow-Night
+  colorscheme jellybeans
+  " colorscheme Tomorrow-Night
 catch
 endtry
 
-syntax enable
+" syntax enable
 filetype plugin indent on
 
 " indicate invisibles
 set listchars=tab:▸\ ,eol:¬,trail:~,
 set list
+
+" highlight cursor line
+set cursorline
+" make it faster
+set re=1
+set ttyfast
+set lazyredraw
+
