@@ -1,8 +1,7 @@
 " syntax highlighting
 syntax on
 try
-  colorscheme jellybeans
-  " colorscheme Tomorrow-Night
+  colorscheme Tomorrow-Night
 catch
 endtry
 

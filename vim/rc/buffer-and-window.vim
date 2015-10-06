@@ -5,3 +5,6 @@ nnoremap <silent>bb :b#<CR>
 " buffer close
 nnoremap <silent>bc :bp\|bd #<CR>
 
+hi VertSplit ctermbg=NONE guibg=NONE
+set fillchars=""
+
