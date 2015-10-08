@@ -14,6 +14,8 @@ set list
 
 " highlight cursor line
 set cursorline
+hi clear CursorLine
+
 " make it faster
 set re=1
 set ttyfast

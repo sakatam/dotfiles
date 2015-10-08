@@ -17,7 +17,7 @@ nnoremap <silent><Leader>r  :<C-u>UniteResume search-buffer<CR>
 " unite grep に ag(The Silver Searcher) を使う
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '-i --nogroup --column --nocolor --color-match ''1;33'''
+  let g:unite_source_grep_default_opts = '-i --nogroup --column --nocolor'
   let g:unite_source_grep_recursive_opt = ''
 endif
 
