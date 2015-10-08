@@ -1,1 +1,1 @@
-ec2list | percol | cut -f 4 | pbcopy && ssh `pbpaste`
+ec2ls | percol | cut -f 4 | pbcopy && ssh `pbpaste`

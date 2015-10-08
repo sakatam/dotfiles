@@ -6,6 +6,7 @@ dirs_to_prepend=(
   "/usr/local/sbin"
   "$HOME/.rbenv/bin"
   "$HOME/.nodenv/bin"
+  "$GOPATH/bin"
 )
 
 dirs_to_append=(
