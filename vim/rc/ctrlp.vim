@@ -9,10 +9,7 @@ map <C-m> :CtrlPMixed<cr>
 
 if executable('ag')
   let g:ctrlp_use_caching=0
-  let g:ctrlp_user_command='ag %s -i --nocolor --nogroup --hidden
-        \ --ignore .git
-        \ --ignore .DS_Store
-        \ -g ""'
+  let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
 endif
 
 let g:ctrlp_bdelete_key = '@'
