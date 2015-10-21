@@ -27,6 +27,7 @@ try
   Plugin 'slim-template/vim-slim'
   Plugin 'vim-ruby/vim-ruby'
   Plugin '29decibel/codeschool-vim-theme'
+  Plugin 'd11wtq/ctrlp_bdelete.vim'
   "Plugin 'ap/vim-buftabline'
 catch
 endtry

@@ -1,7 +1,7 @@
 " syntax highlighting
 syntax on
 try
-  colorscheme Tomorrow-Night
+  colorscheme Tomorrow-Night-Bright
 catch
 endtry
 
