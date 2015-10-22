@@ -23,6 +23,7 @@ endif
 
 " command history
 nnoremap <silent><Leader>h  :<C-u>Unite history/command<cr>
+nnoremap <silent><Leader>r  :<C-u>Unite register<cr>
 
 " enable yank history
 let g:unite_source_history_yank_enable = 1
