@@ -56,17 +56,18 @@ endfunction
 
 function! LightLineFilename()
   let fname = expand('%')
+  let fname_disp = winwidth(0) > 120 ? expand('%') : expand('%:t')
   return fname == 'ControlP' ? g:lightline.ctrlp_item :
        \ fname =~ 'NERD_tree' ?  '' :
        \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-       \ ('' != fname ? fname : '[no name]') .
+       \ ('' != fname ? fname_disp : '[no name]') .
        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
 endfunction
 
 function! LightLineMode()
   let fname = expand('%')
   return fname =~ 'NERD_tree' ?  '' :
-         \ winwidth(0) > 60 ? lightline#mode()[ : 3] : ''
+         \ winwidth(0) > 60 ? lightline#mode()[ : 2] : ''
 endfunction
 
 function! CtrlPMark()
