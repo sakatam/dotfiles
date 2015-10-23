@@ -6,7 +6,7 @@ let g:lightline = {
       \             [ 'fugitive', 'filename' ],
       \             [ 'ctrlpmark' ]
       \           ],
-      \ 'right':  [
+      \   'right':  [
       \             [ 'lineinfo' ],
       \             [ 'percent'],
       \             [ 'fileencoding', 'filetype' ]
@@ -47,8 +47,8 @@ function! LightLineReadonly()
 endfunction
 
 function! LightLineFugitive()
-  if exists("*fugitive#head")
-    let _ = fugitive#head()
+  if expand('%:t') !~? 'NERD' && exists("*fugitive#head")
+    let _ = fugitive#head()[ : 8]
     return strlen(_) ? '⭠ '._ : ''
   endif
   return ''
@@ -57,13 +57,16 @@ endfunction
 function! LightLineFilename()
   let fname = expand('%')
   return fname == 'ControlP' ? g:lightline.ctrlp_item :
+       \ fname =~ 'NERD_tree' ?  '' :
        \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
        \ ('' != fname ? fname : '[no name]') .
        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
 endfunction
 
 function! LightLineMode()
-  return winwidth(0) > 60 ? lightline#mode()[ : 3] : ''
+  let fname = expand('%')
+  return fname =~ 'NERD_tree' ?  '' :
+         \ winwidth(0) > 60 ? lightline#mode()[ : 3] : ''
 endfunction
 
 function! CtrlPMark()
