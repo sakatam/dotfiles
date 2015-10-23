@@ -7,4 +7,5 @@ set expandtab
 
 " line end without line break
 nnoremap % g_
+nmap <Leader>c :let @+=expand('%')<CR>
 
