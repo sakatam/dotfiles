@@ -7,3 +7,8 @@ nnoremap <silent>bc :bp\|bd #<CR>
 
 set fillchars=""
 
+" move cursor by window number
+for n in range(1,9)
+  exe 'nmap <C-w>'.n.' :'.n.'wincmd w<CR>'
+endfor
+

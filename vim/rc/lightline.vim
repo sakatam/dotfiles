@@ -2,7 +2,7 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [
-      \             [ 'mode', 'paste' ],
+      \             [ 'winnr', 'mode', 'paste' ],
       \             [ 'fugitive', 'filename' ],
       \             [ 'ctrlpmark' ]
       \           ],
@@ -12,13 +12,20 @@ let g:lightline = {
       \             [ 'fileencoding', 'filetype' ]
       \           ]
       \ },
+      \ 'inactive': {
+      \   'left': [
+      \             [ 'winnr' ],
+      \             [ 'filename' ]
+      \           ]
+      \ },
       \ 'component_function': {
-      \   'fugitive': 'LightLineFugitive',
-      \   'readonly': 'LightLineReadonly',
-      \   'modified': 'LightLineModified',
-      \   'filename': 'LightLineFilename',
-      \   'mode':     'LightLineMode',
-      \   'ctrlpmark': 'CtrlPMark'
+      \   'fugitive':  'LightLineFugitive',
+      \   'readonly':  'LightLineReadonly',
+      \   'modified':  'LightLineModified',
+      \   'filename':  'LightLineFilename',
+      \   'mode':      'LightLineMode',
+      \   'ctrlpmark': 'CtrlPMark',
+      \   'winnr':     'LightLineWinnr'
       \ },
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
@@ -78,6 +85,10 @@ function! CtrlPMark()
   else
     return ''
   endif
+endfunction
+
+function! LightLineWinnr()
+  return winnr()
 endfunction
 
 let g:ctrlp_status_func = {
