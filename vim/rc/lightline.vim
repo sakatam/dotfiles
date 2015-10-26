@@ -88,7 +88,8 @@ function! CtrlPMark()
 endfunction
 
 function! LightLineWinnr()
-  return winnr()
+  let fname = expand('%')
+  return fname == "ControlP" ? '' : winnr()
 endfunction
 
 let g:ctrlp_status_func = {
