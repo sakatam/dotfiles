@@ -8,14 +8,16 @@ let g:lightline = {
       \           ],
       \   'right':  [
       \             [ 'lineinfo' ],
-      \             [ 'percent'],
-      \             [ 'fileencoding', 'filetype' ]
+      \             [ 'filetype' ]
       \           ]
       \ },
       \ 'inactive': {
       \   'left': [
       \             [ 'winnr' ],
       \             [ 'filename' ]
+      \           ],
+      \   'right':  [
+      \             [ 'lineinfo' ]
       \           ]
       \ },
       \ 'component_function': {
