@@ -91,7 +91,8 @@ endfunction
 
 function! LightLineWinnr()
   let fname = expand('%')
-  return fname == "ControlP" ? '' : winnr()
+  return fname == "ControlP" ? '' :
+      \ winnr('$') == 1 ? '' : winnr()
 endfunction
 
 let g:ctrlp_status_func = {
