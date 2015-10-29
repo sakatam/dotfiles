@@ -46,3 +46,4 @@ esac
 
 unset c_user c_host c_path c_end
 unset -f 256_fg_color 16_fg_color sernary_to_color_num
+

@@ -1,9 +1,9 @@
 set hidden
-nnoremap <silent>bn :bnext<CR>
-nnoremap <silent>bp :bprev<CR>
-nnoremap <silent>bb :b#<CR>
+nnoremap <silent>tn :bnext<CR>
+nnoremap <silent>tp :bprev<CR>
+nnoremap <silent>tt :b#<CR>
 " buffer close
-nnoremap <silent>bc :bp\|bd #<CR>
+nnoremap <silent>tc :bp\|bd #<CR>
 
 set fillchars=""
 
