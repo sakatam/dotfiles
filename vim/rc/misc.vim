@@ -6,6 +6,10 @@ set autoindent
 set expandtab
 
 " line end without line break
-nnoremap % g_
+nmap % g_
 nmap <Leader>c :let @+=expand('%')<CR>
+
+" frequent actions
+nmap <Leader>w :w
+nmap <Leader>q :q
 

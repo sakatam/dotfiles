@@ -47,8 +47,8 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 
-" change the mapleader from \ to ,
-let mapleader=","
+" change the mapleader from \ to...
+let mapleader="\<Space>"
 
 " personal settings
 set rtp+=~/dotfiles/vim/
