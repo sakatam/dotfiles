@@ -9,7 +9,7 @@ let g:unite_enable_smart_case = 1
 nnoremap <silent><Leader>g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 
 " カーソル位置の単語をgrep検索
-nnoremap <silent><Leader>cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W><C-A>
+nnoremap <silent><Leader>cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W><C-E><C-A>
 
 " grep検索結果の再呼出
 nnoremap <silent><Leader>r  :<C-u>UniteResume search-buffer<CR>
