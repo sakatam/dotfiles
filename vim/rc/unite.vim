@@ -36,5 +36,6 @@ autocmd FileType unite call s:unite_settings()
 function! s:unite_settings()
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+  nmap <buffer> <ESC><ESC> q
 endfunction
 
