@@ -21,13 +21,6 @@ if executable('ag')
   let g:unite_source_grep_recursive_opt = ''
 endif
 
-" command history
-nnoremap <silent><Leader>h  :<C-u>Unite history/command<cr>
-nnoremap <silent><Leader>p  :<C-u>Unite register<cr>
-
-" enable yank history
-let g:unite_source_history_yank_enable = 1
-
 " cursorline highlight
 " let g:unite_cursor_line_highlight = 'Search'
 " let g:unite_abbr_highlight = 'StatusLine'

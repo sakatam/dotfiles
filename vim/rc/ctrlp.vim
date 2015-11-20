@@ -17,3 +17,9 @@ unmap <CR>
 let g:ctrlp_bdelete_key = '@'
 call ctrlp_bdelete#init()
 
+" command history
+nnoremap <silent><Leader>h  :<C-u>CtrlPCmdline<cr>
+" yank history
+nnoremap <silent><Leader>p  :<C-u>CtrlPYankring<cr>
+let g:ctrlp_yankring_limit = 100
+

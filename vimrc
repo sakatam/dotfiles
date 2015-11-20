@@ -19,15 +19,13 @@ try
   Plugin 'tpope/vim-dispatch'
   Plugin 'thoughtbot/vim-rspec'
   Plugin 'tpope/vim-fugitive'
-  Plugin 'Shougo/vimproc.vim'
-  Plugin 'Shougo/unite.vim'
-  Plugin 'ujihisa/unite-colorscheme'
-  Plugin 'thinca/vim-unite-history'
   Plugin 'itchyny/lightline.vim'
   Plugin 'slim-template/vim-slim'
   Plugin 'vim-ruby/vim-ruby'
   Plugin '29decibel/codeschool-vim-theme'
   Plugin 'd11wtq/ctrlp_bdelete.vim'
+  Plugin 'pangloss/vim-javascript'
+  Plugin 'sgur/ctrlp-extensions.vim'
   "Plugin 'ap/vim-buftabline'
 catch
 endtry
