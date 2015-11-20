@@ -13,10 +13,9 @@ if executable('ag')
 
   " command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
   " bind \ (backward slash) to grep shortcut
-  nnoremap \ :Ag<space>
+  nnoremap \ :Ag!<space>
 
   " bind K to grep word under cursor
-  nnoremap K :Ag<space>"\b<C-R><C-W>\b"
+  nnoremap K :Ag!<space>"\b<C-R><C-W>\b"
 endif
-
 
