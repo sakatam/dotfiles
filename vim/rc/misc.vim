@@ -13,3 +13,6 @@ nmap <Leader>c :let @+=expand('%')<CR>
 nmap <Leader>w :w
 nmap <Leader>q :q
 
+" toggle paste mode
+set pastetoggle=<C-E>
+
