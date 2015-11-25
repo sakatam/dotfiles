@@ -16,3 +16,6 @@ nmap <Leader>q :q
 " toggle paste mode
 set pastetoggle=<C-E>
 
+" shorten key seq timeout
+set timeoutlen=500
+
