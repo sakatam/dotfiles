@@ -4,12 +4,20 @@ which brew &> /dev/null && [ -f "`brew --prefix`/etc/bash_completion" ] && sourc
 which rbenv &> /dev/null && eval "$(rbenv init -)"
 which nodenv &> /dev/null && eval "$(nodenv init -)"
 
-function cdgem() {
+function gemcd() {
   local gem_name=$(bundle list | sed -e 's/^ *\* *//g' | peco | cut -d \  -f 1)
   if [ -n "$gem_name" ]; then
     local gem_dir=$(bundle show ${gem_name})
     echo "cd to ${gem_dir}"
     cd $gem_dir
+  fi
+}
+
+function gemopen() {
+  local gem_name=$(bundle list | sed -e 's/^ *\* *//g' | peco | cut -d \  -f 1)
+  if [ -n "$gem_name" ]; then
+    local gem_dir=$(bundle show ${gem_name})
+    vim -c "cd ${gem_dir}" -c "NERDTree"
   fi
 }
 
