@@ -23,3 +23,6 @@ nnoremap <silent><Leader>h  :<C-u>CtrlPCmdline<cr>
 nnoremap <silent><Leader>p  :<C-u>CtrlPYankring<cr>
 let g:ctrlp_yankring_limit = 100
 
+" list functions
+nnoremap <silent><Leader>f  :<C-u>CtrlPFunky<cr>
+

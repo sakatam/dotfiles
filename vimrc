@@ -26,6 +26,7 @@ try
   Plugin 'd11wtq/ctrlp_bdelete.vim'
   Plugin 'pangloss/vim-javascript'
   Plugin 'sgur/ctrlp-extensions.vim'
+  Plugin 'tacahiroy/ctrlp-funky'
   "Plugin 'ap/vim-buftabline'
 catch
 endtry
