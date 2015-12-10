@@ -16,6 +16,6 @@ if executable('ag')
   nnoremap \ :Ag!<space>
 
   " bind K to grep word under cursor
-  nnoremap K :Ag!<space>"\b<C-R><C-W>\b"
+  nnoremap <c-\> :Ag!<space>"\b<C-R><C-W>\b"
 endif
 

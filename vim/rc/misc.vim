@@ -19,3 +19,6 @@ set pastetoggle=<C-E>
 " shorten key seq timeout
 set timeoutlen=500
 
+" insert new line
+nmap <s-k> o<esc>
+
