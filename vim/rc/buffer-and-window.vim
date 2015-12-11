@@ -2,9 +2,11 @@ set hidden
 nnoremap <silent>tn :bnext<CR>
 nnoremap <silent>tp :bprev<CR>
 nnoremap <silent>tt :b#<CR>
+
 " arrow keys for switch buffer
-map <LEFT> <ESC>:bp<CR>
-map <RIGHT> <ESC>:bn<CR>
+"map <LEFT> <ESC>:bp<CR>
+"map <RIGHT> <ESC>:bn<CR>
+
 " buffer close
 nnoremap <silent>tc :bp\|bd #<CR>
 
