@@ -54,3 +54,6 @@ let mapleader="\<Space>"
 set rtp+=~/dotfiles/vim/
 runtime! rc/*.vim
 
+" history
+set history=1000
+
