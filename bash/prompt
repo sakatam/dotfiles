@@ -39,7 +39,7 @@ fi
 # indicate git branch name
 case "$TERM" in
 xterm* | screen*)
-  leader="→"
+  leader="‣"
   # PS1="${c_host}\u@\h${c_end}:${c_path}\w${c_end}${c_git}${git_ps1}${c_end}\$ ";;
   PS1="${c_path}\w${c_end}${c_git}${git_ps1}${c_end}${c_host}${leader}${c_end} ";;
 *)
