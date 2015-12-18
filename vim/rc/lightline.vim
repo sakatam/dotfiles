@@ -25,9 +25,11 @@ let g:lightline = {
       \   'readonly':  'LightLineReadonly',
       \   'modified':  'LightLineModified',
       \   'filename':  'LightLineFilename',
+      \   'filetype':  'LightLineFiletype',
       \   'mode':      'LightLineMode',
       \   'ctrlpmark': 'CtrlPMark',
-      \   'winnr':     'LightLineWinnr'
+      \   'winnr':     'LightLineWinnr',
+      \   'lineinfo':  'LightLineLineInfo'
       \ },
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
@@ -73,6 +75,12 @@ function! LightLineFilename()
        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
 endfunction
 
+function! LightLineFiletype()
+  let fname = expand('%:t')
+  return fname =~ 'NERD_tree' ? '' :
+        \ strlen(&filetype) ? &filetype : ''
+endfunction
+
 function! LightLineMode()
   let fname = expand('%')
   return fname =~ 'NERD_tree' ?  '' :
@@ -95,6 +103,12 @@ function! LightLineWinnr()
       \ winnr('$') == 1 ? '' : winnr()
 endfunction
 
+function! LightLineLineInfo()
+  let fname = expand('%:t')
+  return fname =~ 'NERD_tree' ? '' :
+        \ printf("%3d:%-2d", line('.'), col('.'))
+endfunction
+
 let g:ctrlp_status_func = {
   \ 'main': 'CtrlPStatusFunc_1',
   \ 'prog': 'CtrlPStatusFunc_2',
@@ -111,3 +125,4 @@ endfunction
 function! CtrlPStatusFunc_2(str)
   return lightline#statusline(0)
 endfunction
+
