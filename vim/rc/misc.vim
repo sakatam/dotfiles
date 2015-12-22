@@ -24,5 +24,4 @@ nmap <s-k> o<esc>
 
 " colon!
 nnoremap ; :
-nnoremap : ;
 
