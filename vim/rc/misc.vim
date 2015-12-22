@@ -22,3 +22,7 @@ set timeoutlen=500
 " insert new line
 nmap <s-k> o<esc>
 
+" colon!
+nnoremap ; :
+nnoremap : ;
+
