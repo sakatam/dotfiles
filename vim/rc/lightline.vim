@@ -67,7 +67,9 @@ endfunction
 
 function! LightLineFilename()
   let fname = expand('%')
-  let fname_disp = winwidth(0) > 120 ? expand('%') : expand('%:t')
+  let width = winwidth(0) - 50
+  let fname_disp = width > strlen(fname) ? fname : fname[ -1 * width : ]
+  " let fname_disp = winwidth(0) > 100 ? expand('%') : expand('%:t')
   return fname == 'ControlP' ? g:lightline.ctrlp_item :
        \ fname =~ 'NERD_tree' ?  '' :
        \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
