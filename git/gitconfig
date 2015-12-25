@@ -38,6 +38,7 @@
 
 [rebase]
   stat = true
+  autosquash = true
 
 [pager]
   log = diff-highlight | less -r
