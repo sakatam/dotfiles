@@ -4,7 +4,9 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:15,results:30'
 
 map <C-i> :CtrlPBuffer<cr>
 map <C-m> :CtrlPMixed<cr>
-unmap <CR>
+
+" unmap <CR>
+nmap <CR> :CtrlPBuffer<cr>
 
 let g:ctrlp_bdelete_key = '@'
 call ctrlp_bdelete#init()
