@@ -25,3 +25,7 @@ nmap <s-k> o<esc>
 " colon!
 nnoremap ; :
 
+" replace currently selected text with default register
+" without yanking it
+vnoremap <leader>p "_dP
+
