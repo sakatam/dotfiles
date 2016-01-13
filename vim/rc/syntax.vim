@@ -14,7 +14,7 @@ set list
 
 " highlight cursor line
 set cursorline
-hi clear CursorLine
+" hi clear CursorLine
 
 " make it faster
 set re=1
