@@ -28,6 +28,7 @@ try
   Plugin 'sgur/ctrlp-extensions.vim'
   Plugin 'tacahiroy/ctrlp-funky'
   Plugin 'milkypostman/vim-togglelist'
+  Plugin 'AndrewRadev/linediff.vim'
   "Plugin 'ap/vim-buftabline'
 catch
 endtry
