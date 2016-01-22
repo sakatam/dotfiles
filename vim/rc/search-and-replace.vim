@@ -17,5 +17,8 @@ if executable('ag')
 
   " bind K to grep word under cursor
   nnoremap <c-\> :Ag!<space>-i<space>"\b<C-R><C-W>\b"
+
+  let g:ag_apply_qmappings = 0
+  let g:ag_qhandler = "CtrlPQuickfix"
 endif
 
