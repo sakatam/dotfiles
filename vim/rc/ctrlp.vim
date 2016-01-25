@@ -14,7 +14,9 @@ call ctrlp_bdelete#init()
 " command history
 nnoremap <silent><Leader>h  :<C-u>CtrlPCmdline<cr>
 " yank history
-nnoremap <silent><Leader>p  :<C-u>CtrlPYankring<cr>
+nnoremap <silent><Leader>y  :<C-u>CtrlPYankring<cr>
+" last mode
+nnoremap <silent><Leader>p  :<C-u>CtrlPLastMode<cr>
 let g:ctrlp_yankring_limit = 100
 
 " list functions
