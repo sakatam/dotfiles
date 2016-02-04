@@ -1,5 +1,5 @@
 " substitute cursor word
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+nnoremap <Leader>s :%S/<C-r><C-w>//g<Left><Left>
 
 " The Silver Searcher
 if executable('ag')
