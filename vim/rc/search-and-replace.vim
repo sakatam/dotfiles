@@ -1,5 +1,6 @@
 " substitute cursor word
 nnoremap <Leader>s :%S/<C-r><C-w>//g<Left><Left>
+let g:eregex_default_enable = 0
 
 " The Silver Searcher
 if executable('ag')
