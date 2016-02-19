@@ -11,3 +11,5 @@ export BUNDLER_EDITOR=vim
 
 export PROJECTS_PATH=$HOME/code
 export GOPATH=$PROJECTS_PATH/go
+export XDG_CONFIG_HOME=$HOME/.config
+
