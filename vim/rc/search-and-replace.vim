@@ -2,6 +2,9 @@
 nnoremap <Leader>s :%S/<C-r><C-w>//g<Left><Left>
 let g:eregex_default_enable = 0
 
+" reset search hilight
+nnoremap <Leader>r :noh<CR>
+
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
