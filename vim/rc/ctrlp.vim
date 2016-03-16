@@ -12,13 +12,13 @@ let g:ctrlp_bdelete_key = '@'
 call ctrlp_bdelete#init()
 
 " command history
-nnoremap <silent><Leader>h  :<C-u>CtrlPCmdline<cr>
+nmap <silent><Leader>h  :<C-u>CtrlPCmdline<cr>
 " yank history
-nnoremap <silent><Leader>y  :<C-u>CtrlPYankring<cr>
+nmap <silent><Leader>y  :<C-u>CtrlPYankring<cr>
 " last mode
-nnoremap <silent><Leader>p  :<C-u>CtrlPLastMode<cr>
+nmap <silent><Leader>p  :<C-u>CtrlPLastMode<cr>
 let g:ctrlp_yankring_limit = 100
 
 " list functions
-nnoremap <silent><Leader>f  :<C-u>CtrlPFunky<cr>
+nmap <silent><Leader>f  :<C-u>CtrlPFunky<cr>
 

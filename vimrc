@@ -30,7 +30,6 @@ try
   Plugin 'milkypostman/vim-togglelist'
   Plugin 'AndrewRadev/linediff.vim'
   Plugin 'othree/eregex.vim'
-  "Plugin 'ap/vim-buftabline'
 catch
 endtry
 
