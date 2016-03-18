@@ -30,6 +30,7 @@ try
   Plugin 'milkypostman/vim-togglelist'
   Plugin 'AndrewRadev/linediff.vim'
   Plugin 'othree/eregex.vim'
+  Plugin 'chrismccord/bclose.vim'
 catch
 endtry
 

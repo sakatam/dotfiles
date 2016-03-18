@@ -8,7 +8,7 @@ nnoremap <silent>tt :b#<CR>
 "map <RIGHT> <ESC>:bn<CR>
 
 " buffer close
-nnoremap <silent>tc :bp\|bd #<CR>
+nnoremap <silent>tc :Bclose<CR>
 
 set fillchars=""
 
