@@ -1,11 +1,16 @@
 DOTFILES := $(shell pwd -P)
+NVIM_CONF := "${HOME}/.config/nvim"
 
-all: links bash_profile brew
+all: dirs links bash_profile brew
+
+dirs:
+	[ -d $(NVIM_CONF) ] || mkdir -p $(NVIM_CONF)
 
 links:
 	ln -sf $(DOTFILES)/editrc ${HOME}/.editrc
 	ln -sf $(DOTFILES)/inputrc ${HOME}/.inputrc
 	ln -sf $(DOTFILES)/vimrc ${HOME}/.vimrc
+	ln -sf $(DOTFILES)/vimrc $(NVIM_CONF)/init.vim
 	ln -sf $(DOTFILES)/gemrc ${HOME}/.gemrc
 	ln -sf $(DOTFILES)/tmux.conf ${HOME}/.tmux.conf
 	ln -sf $(DOTFILES)/git/gitconfig ${HOME}/.gitconfig
