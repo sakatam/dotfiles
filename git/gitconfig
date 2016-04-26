@@ -33,7 +33,7 @@
 
 [core]
   ignorecase = false
-  excludesfile = /opt/boxen/config/git/gitignore
+#  excludesfile = /opt/boxen/config/git/gitignore
   pager = less -r
 
 [rebase]
@@ -49,14 +49,16 @@
 [hub]
   protocol = https
 
-[include]
-  path = gitconfig-boxen
+# [include]
+#   path = gitconfig-boxen
 
-[credential]
-  helper = /opt/boxen/bin/boxen-git-credential
+# [credential]
+#   helper = /opt/boxen/bin/boxen-git-credential
 
 [push]
   default = current
 
 [pull]
   rebase = true
+[credential]
+	helper = osxkeychain
