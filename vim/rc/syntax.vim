@@ -19,7 +19,10 @@ set cursorline
 highlight LineNr ctermfg=244
 
 " make it faster
-set re=1
+try
+  set re=1
+catch
+endtry
 set ttyfast
 set lazyredraw
 
