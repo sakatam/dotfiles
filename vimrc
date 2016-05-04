@@ -4,7 +4,12 @@ scriptencoding utf-8
 try
   set nocompatible
   filetype off
-  set rtp+=~/.vim/bundle/Vundle.vim/
+  if has('nvim')
+    let s:editor_root=expand("~/.config/nvim")
+  else
+    let s:editor_root=expand("~/.vim")
+  endif
+  let &rtp = &rtp . ',' . s:editor_root . '/bundle/Vundle.vim'
   call vundle#rc()
 
   Bundle 'VundleVim/Vundle.vim'

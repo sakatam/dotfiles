@@ -21,12 +21,12 @@ links:
 	# ln -sf $(DOTFILES)/powconfig ${HOME}/.powconfig
 
 bash_profile:
-	[ -e ${HOME}/.bash_profile ] || echo source ${DOTFILES}/dotfiles/bash/bashrc > ${HOME}/.bash_profile
+	[ -e ${HOME}/.bash_profile ] || echo source ${DOTFILES}/bash/bashrc > ${HOME}/.bash_profile
 
 brew:
 	[[ -z `which -s brew` ]] || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	[[ -n `brew ls --version ag`     ]] || brew install ag
 	[[ -n `brew ls --version git`    ]] || brew install git
-	[[ -n `brew ls --version neovim` ]] || brew install neovim
+	[[ -n `brew ls --version neovim` ]] || brew install neovim/neovim/neovim
 	[[ -n `brew ls --version tmux`   ]] || brew install tmux
 

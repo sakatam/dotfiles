@@ -7,7 +7,7 @@ files=(
   /etc/bashrc
   $BASHRC_DIR/options         # Options
   $BASHRC_DIR/exports         # Exports
-  $BASHRC_DIR/history         # History setting
+#  $BASHRC_DIR/history         # History setting
   $BASHRC_DIR/aliases         # Aliases
   $HOME/.bash_profile.local   # Local and private settings not under version control (e.g. git credentials)
   $BASHRC_DIR/paths           # Path modifications (must source after `.bash_profile.local` in case of custom `brew` location)

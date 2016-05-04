@@ -1,7 +1,13 @@
 #!/bin/bash
-[ -f "/opt/boxen/env.sh" ] && source "/opt/boxen/env.sh"
-which brew &> /dev/null && [ -f "`brew --prefix`/etc/bash_completion" ] && source "`brew --prefix`/etc/bash_completion"
-which rbenv &> /dev/null && eval "$(rbenv init -)"
+
+if hash brew 2>/dev/null; then
+  comp_path="`brew --prefix`/etc/bash_completion.d"
+  if [ -d $comp_path ]; then
+    source "${comp_path}/git-prompt.sh"
+    source "${comp_path}/git-completion.bash"
+  fi
+fi
+which brew &> /dev/null && which rbenv &> /dev/null && eval "$(rbenv init -)"
 which nodenv &> /dev/null && eval "$(nodenv init -)"
 
 function gemcd() {

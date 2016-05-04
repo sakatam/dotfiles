@@ -17,3 +17,4 @@ esac
 # http://dallarosa.tumblr.com/post/31333511717/commandt-and-ctrl-s-on-mac-os-x
 stty -ixon -ixoff
 stty stop undef
+

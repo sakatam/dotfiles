@@ -31,8 +31,8 @@ let g:lightline = {
       \   'winnr':     'LightLineWinnr',
       \   'lineinfo':  'LightLineLineInfo'
       \ },
-      \ 'separator': { 'left': '⮀', 'right': '⮂' },
-      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
       \ }
 
 function! LightLineModified()
@@ -51,7 +51,7 @@ function! LightLineReadonly()
   if &filetype == "help"
     return ""
   elseif &readonly
-    return "⭤"
+    return ""
   else
     return ""
   endif
@@ -60,7 +60,7 @@ endfunction
 function! LightLineFugitive()
   if expand('%:t') !~? 'NERD' && exists("*fugitive#head")
     let _ = fugitive#head()[ : 8]
-    return strlen(_) ? '⭠ '._ : ''
+    return strlen(_) ? ' '._ : ''
   endif
   return ''
 endfunction
