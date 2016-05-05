@@ -7,13 +7,13 @@ dirs:
 	[ -d $(NVIM_CONF) ] || mkdir -p $(NVIM_CONF)
 
 links:
-	ln -sf $(DOTFILES)/editrc ${HOME}/.editrc
-	ln -sf $(DOTFILES)/inputrc ${HOME}/.inputrc
-	ln -sf $(DOTFILES)/vimrc ${HOME}/.vimrc
-	ln -sf $(DOTFILES)/vimrc $(NVIM_CONF)/init.vim
-	ln -sf $(DOTFILES)/gemrc ${HOME}/.gemrc
-	ln -sf $(DOTFILES)/tmux.conf ${HOME}/.tmux.conf
-	ln -sf $(DOTFILES)/git/gitconfig ${HOME}/.gitconfig
+	[ -e ${HOME}/.editrc       ] || ln -sf $(DOTFILES)/editrc ${HOME}/.editrc
+	[ -e ${HOME}/.inputrc      ] || ln -sf $(DOTFILES)/inputrc ${HOME}/.inputrc
+	[ -e ${HOME}/.vimrc        ] || ln -sf $(DOTFILES)/vimrc ${HOME}/.vimrc
+	[ -e $(NVIM_CONF)/init.vim ] || ln -sf $(DOTFILES)/vimrc $(NVIM_CONF)/init.vim
+	[ -e ${HOME}/.gemrc        ] || ln -sf $(DOTFILES)/gemrc ${HOME}/.gemrc
+	[ -e ${HOME}/.tmux.conf    ] || ln -sf $(DOTFILES)/tmux.conf ${HOME}/.tmux.conf
+	[ -e ${HOME}/.gitconfig    ] || ln -sf $(DOTFILES)/git/gitconfig ${HOME}/.gitconfig
 	# ln -sf $(DOTFILES)/ackrc ${HOME}/.ackrc
 	# ln -sf $(DOTFILES)/screenrc ${HOME}/.screenrc
 	# ln -sf $(DOTFILES)/git/gitconfig-boxen ${HOME}/.gitconfig-boxen
