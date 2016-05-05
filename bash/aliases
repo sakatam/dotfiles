@@ -25,4 +25,5 @@ alias be='bundle exec'
 alias sift="sift --exclude-dirs='.git'"
 
 alias vim=nvim
+alias mosh="mosh -6"
 

@@ -65,3 +65,8 @@ runtime! rc/*.vim
 " history
 set history=1000
 
+let vimhome=expand('<sfile>:p:h')
+if filereadable(vimhome . "/local.vim")
+  execute 'source ' . vimhome . '/local.vim'
+endif
+
