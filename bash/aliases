@@ -3,16 +3,23 @@
 alias curl='curl -w "\n"'
 alias formatjson='python -mjson.tool'
 alias grep='grep --color'
-alias ls='ls -GF --color=always'
+
+if [ `uname -s` == "Linux" ]; then
+  alias ls='ls -GF --color=always'
+else
+  alias ls='ls -GF'
+fi
 alias ll='ls -l'
+
 alias psql='psql -x'
-alias screen='screen -U -D -RR'
 alias tree='tree -F --dirsfirst -C'
 alias zcat='gunzip -c'
 
 # OSX specific
-alias here='open .'
-alias osascript='arch -i386 osascript'
+if [ `uname -s` == "Darwin" ]; then
+  alias here='open .'
+  alias osascript='arch -i386 osascript'
+fi
 
 # git
 alias g='git'

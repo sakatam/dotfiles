@@ -1,6 +1,14 @@
 DOTFILES := $(shell pwd -P)
 NVIM_CONF := "${HOME}/.config/nvim"
 
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	OS=linux
+endif
+ifeq ($(UNAME_S),Darwin)
+	OS=osx
+endif
+
 all: dirs links bash_profile brew
 
 dirs:
@@ -14,10 +22,7 @@ links:
 	[ -e ${HOME}/.gemrc        ] || ln -s $(DOTFILES)/gemrc ${HOME}/.gemrc
 	[ -e ${HOME}/.tmux.conf    ] || ln -s $(DOTFILES)/tmux.conf ${HOME}/.tmux.conf
 	[ -e ${HOME}/.gitconfig    ] || ln -s $(DOTFILES)/git/gitconfig ${HOME}/.gitconfig
-	# ln -sf $(DOTFILES)/ackrc ${HOME}/.ackrc
-	# ln -sf $(DOTFILES)/screenrc ${HOME}/.screenrc
-	# ln -sf $(DOTFILES)/git/gitconfig-boxen ${HOME}/.gitconfig-boxen
-	# ln -sf $(DOTFILES)/powconfig ${HOME}/.powconfig
+	[ -e ${HOME}/.gitconfig.local    ] || ln -s $(DOTFILES)/git/gitconfig.local.${OS} ${HOME}/.gitconfig.local
 
 bash_profile:
 	[ -e ${HOME}/.bash_profile ] || echo source ${DOTFILES}/bash/bashrc > ${HOME}/.bash_profile
