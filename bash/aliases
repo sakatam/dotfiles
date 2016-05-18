@@ -3,7 +3,7 @@
 alias curl='curl -w "\n"'
 alias formatjson='python -mjson.tool'
 alias grep='grep --color'
-alias ls='ls -GF'
+alias ls='ls -GF --color=always'
 alias ll='ls -l'
 alias psql='psql -x'
 alias screen='screen -U -D -RR'
@@ -24,6 +24,12 @@ alias be='bundle exec'
 # sift
 alias sift="sift --exclude-dirs='.git'"
 
-alias vim=nvim
+# neovim by default if exists
+if hash nvim 2>/dev/null; then
+  alias vim=nvim
+fi
+
 alias mosh="mosh -6"
+
+alias tm="tmux attach || tmux new"
 

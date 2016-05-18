@@ -22,3 +22,6 @@ let g:ctrlp_yankring_limit = 100
 " list functions
 nmap <silent><Leader>f  :<C-u>CtrlPFunky<cr>
 
+" better performance?
+let g:ctrlp_custom_ignore = 'tmp$\|\.git$\|\.hg$\|\.svn$\|.rvm$|.bundle$\|vendor'
+

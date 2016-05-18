@@ -33,16 +33,21 @@ c_end="\[\033[00m\]"
 # Enabling git branch indication
 if hash __git_ps1 2>/dev/null; then
   export GIT_PS1_SHOWDIRTYSTATE=1
-  git_ps1=" \$(__git_ps1 \"%s \")"
+  scm_ps1=" \$(__git_ps1 \"%s \")"
+fi
+
+# Enabling hg bookmark indication
+if hash _dotfiles_scm_info 2>/dev/null; then
+  scm_ps1=" \$(_dotfiles_scm_info \"%s \")"
 fi
 
 # indicate git branch name
 case "$TERM" in
 xterm* | screen*)
-  # leader="${c_host}‣ ${c_end}"
+  # leader="${c_host}\u ${c_end}"
   leader=""
   follower="${c_host}> ${c_end}"
-  PS1="${leader}${c_path}\w${c_end}${c_git}${git_ps1}${c_end}${follower}";;
+  PS1="${leader}${c_path}\w${c_end}${c_git}${scm_ps1}${c_end}${follower}";;
 *)
   PS1='\u@\h:\w\$ ';;
 esac
