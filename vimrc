@@ -37,6 +37,7 @@ try
   Plugin 'othree/eregex.vim'
   Plugin 'chrismccord/bclose.vim'
 catch
+  echomsg 'error occurred:' . v:exception
 endtry
 
 " line numbers
