@@ -9,7 +9,7 @@ shopt -s histappend
 
 # history sharing
 case "$TERM" in
-xterm*)
+xterm*|screen*)
   export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 esac
 

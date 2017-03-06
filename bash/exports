@@ -13,3 +13,5 @@ export PROJECTS_PATH=$HOME/code
 export GOPATH=$PROJECTS_PATH/go
 export XDG_CONFIG_HOME=$HOME/.config
 
+# for tmux
+export TMUX_HOSTNAME_BG=colour4

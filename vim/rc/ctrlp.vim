@@ -1,6 +1,16 @@
 " no max file limit
 let g:ctrlp_max_files = 0
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:15,results:30'
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files'],
+    \ 2: ['.hg', 'hg --cwd %s files -X "**/*.png" "**/*.jpg" "**/*.gif" .'],
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
+
+" faster matcher
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 map <C-i> :CtrlPBuffer<cr>
 map <C-m> :CtrlPMixed<cr>
@@ -21,7 +31,4 @@ let g:ctrlp_yankring_limit = 100
 
 " list functions
 nmap <silent><Leader>f  :<C-u>CtrlPFunky<cr>
-
-" better performance?
-let g:ctrlp_custom_ignore = 'tmp$\|\.git$\|\.hg$\|\.svn$\|.rvm$|.bundle$\|vendor'
 

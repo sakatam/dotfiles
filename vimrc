@@ -36,6 +36,7 @@ try
   Plugin 'AndrewRadev/linediff.vim'
   Plugin 'othree/eregex.vim'
   Plugin 'chrismccord/bclose.vim'
+  Plugin 'FelikZ/ctrlp-py-matcher'
 catch
   echomsg 'error occurred:' . v:exception
 endtry
@@ -70,4 +71,6 @@ let vimhome=expand('<sfile>:p:h')
 if filereadable(vimhome . "/local.vim")
   execute 'source ' . vimhome . '/local.vim'
 endif
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
