@@ -44,10 +44,9 @@ fi
 # indicate git branch name
 case "$TERM" in
 xterm* | screen*)
-  # leader="${c_host}\u ${c_end}"
-  leader=""
-  follower="${c_host}> ${c_end}"
-  PS1="${leader}${c_path}\w${c_end}${c_git}${scm_ps1}${c_end}${follower}";;
+  leader="${c_host}@\h${c_end}"
+  follower="> "
+  PS1="${leader}${c_path}:\w${c_end}${c_git}${scm_ps1}${c_end}${follower}";;
 *)
   PS1='\u@\h:\w\$ ';;
 esac
