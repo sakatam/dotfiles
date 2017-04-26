@@ -2,11 +2,11 @@
 dirs_to_prepend=(
   "$HOME/bin"
   "$DOTFILES_DIR/bin"
-  "/usr/local/bin" # Ensure that this bin always takes precedence over `/usr/bin`
-  "/usr/local/sbin"
   "$HOME/.rbenv/bin"
   "$HOME/.nodenv/bin"
   "$GOPATH/bin"
+  "/usr/local/bin" # Ensure that this bin always takes precedence over `/usr/bin`
+  "/usr/local/sbin"
 )
 
 dirs_to_append=(
