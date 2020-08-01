@@ -7,8 +7,13 @@ if hash brew 2>/dev/null; then
     source "${comp_path}/git-completion.bash"
   fi
 fi
-which brew &> /dev/null && which rbenv &> /dev/null && eval "$(rbenv init -)"
-which nodenv &> /dev/null && eval "$(nodenv init -)"
+
+if hash brew 2>/dev/null; then
+  hash rbenv 2>/dev/null && eval "$(rbenv init -)"
+fi
+if hash nodenv 2>/dev/null; then
+  eval "$(nodenv init -)"
+fi
 
 function gemcd() {
   local gem_name=$(bundle list | sed -e 's/^ *\* *//g' | peco | cut -d \  -f 1)
